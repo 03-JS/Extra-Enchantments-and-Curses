@@ -1,2 +1,2 @@
 # Extra-Enchantments-Curses
-Adds new Enchantments & Curses to Minecraft
+Adds 19 new Enchantments & 8 new Curses to Minecraft

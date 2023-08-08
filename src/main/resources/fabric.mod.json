@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "extra-enchantments-and-curses",
+  "version": "1.6-b1",
+
+  "name": "Extra Enchantments and Curses",
+  "description": "This mod adds some new enchantments and curses to the game",
+  "authors": [
+    "JS03"
+  ],
+  "contact": {
+    "homepage": "https://modrinth.com/mod/extra-enchantments-and-curses",
+    "sources": "https://github.com/03-JS/Extra-Enchantments-and-Curses"
+  },
+
+  "license": "MIT",
+  "icon": "assets/extraenchants/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.fabricmc.extraenchantments.ExtraEnchantsMain"
+    ]
+  },
+  "mixins": [
+    "extraenchantments.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.14.12",
+    "fabric": "*",
+    "minecraft": ">=1.19",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

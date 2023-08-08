@@ -17,7 +17,6 @@ public class ExtraEnchantsMain implements ModInitializer {
     // It is considered best practice to use your mod id as the logger's name.
     // That way, it's clear which mod wrote info, warnings, and errors.
     public static final Logger LOGGER = LoggerFactory.getLogger("extra_enchants");
-    // public static final EntityGroup DEMON = new EntityGroup();
     private static final Enchantment HEALTH_FOR_BLOOD = new HealthForBlood(Enchantment.Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     private static final Enchantment ILLAGERS_BANE = new IllagersBane(Enchantment.Rarity.UNCOMMON, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     private static final Enchantment FISHERMANS_BLADE = new FishermansBlade(Enchantment.Rarity.UNCOMMON, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});

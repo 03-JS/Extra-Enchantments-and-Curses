@@ -105,7 +105,7 @@ public abstract class PlayerMixin extends LivingEntity {
             if (itemStackMainHand.getItem() instanceof AxeItem) {
                 Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_SPEED)).setBaseValue(3.5);
             } else {
-                Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_SPEED)).setBaseValue(3.005);
+                Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_SPEED)).setBaseValue(3.1);
             }
         } else {
             if (swiftnessLevel <= 0) {

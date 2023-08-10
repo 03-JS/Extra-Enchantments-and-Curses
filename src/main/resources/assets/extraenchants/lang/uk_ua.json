@@ -58,5 +58,9 @@
   "enchantment.extra_enchantments.reach": "Досяжність",
   "enchantment.extra_enchantments.reach.desc": "Подовжує, як далеко ви можете дістати й ударити мечем або інструментом",
   "enchantment.extra_enchantments.swiftness": "Прудкість",
-  "enchantment.extra_enchantments.swiftness.desc": "Збільшує швидкість атаки зачарованих предметів"
+  "enchantment.extra_enchantments.swiftness.desc": "Збільшує швидкість атаки зачарованих предметів",
+  "enchantment.extra_enchantments.attrition_curse": "Прокляття виснаження",
+  "enchantment.extra_enchantments.attrition_curse.desc": "Зменшує швидкість атаки зачарованих предметів",
+  "enchantment.extra_enchantments.overshield": "Надзахист",
+  "enchantment.extra_enchantments.overshield.desc": "Збільшує здоров'я носія"
 }

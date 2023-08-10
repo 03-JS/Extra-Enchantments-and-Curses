@@ -58,5 +58,9 @@
   "enchantment.extra_enchantments.reach": "Reach",
   "enchantment.extra_enchantments.reach.desc": "Extends how far you can reach and hit with a sword or tool",
   "enchantment.extra_enchantments.swiftness": "Swiftness",
-  "enchantment.extra_enchantments.swiftness.desc": "Increases the enchanted item's attack speed"
+  "enchantment.extra_enchantments.swiftness.desc": "Increases the enchanted item's attack speed",
+  "enchantment.extra_enchantments.attrition_curse": "Curse of Attrition",
+  "enchantment.extra_enchantments.attrition_curse.desc": "Decreases the enchanted item's attack speed",
+  "enchantment.extra_enchantments.overshield": "Overshield",
+  "enchantment.extra_enchantments.overshield.desc": "Increases the wearer's health"
 }

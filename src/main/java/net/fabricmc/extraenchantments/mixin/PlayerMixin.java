@@ -28,7 +28,8 @@ public abstract class PlayerMixin extends LivingEntity {
     @Shadow
     public abstract ItemStack getEquippedStack(EquipmentSlot slot);
 
-    @Shadow public abstract PlayerAbilities getAbilities();
+//    @Shadow
+//    public abstract PlayerAbilities getAbilities();
 
     protected PlayerMixin(EntityType<? extends LivingEntity> entityType, World world) {
         super(entityType, world);
@@ -52,6 +53,7 @@ public abstract class PlayerMixin extends LivingEntity {
         int spectralLevel = EnchantmentHelper.getLevel(ExtraEnchantsMain.SPECTRAL_VISION, itemStackHead);
         int reachLevel = EnchantmentHelper.getLevel(ExtraEnchantsMain.REACH, itemStackMainHand);
         int swiftnessLevel = EnchantmentHelper.getLevel(ExtraEnchantsMain.SWIFTNESS, itemStackMainHand);
+        int attritionLevel = EnchantmentHelper.getLevel(ExtraEnchantsMain.CURSE_OF_ATTRITION, itemStackMainHand);
         if (slownessLevel > 0) {
             this.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 20, 3, false, false, false));
             this.addStatusEffect(new StatusEffectInstance(StatusEffects.MINING_FATIGUE, 20, 3, false, false, false));
@@ -98,6 +100,17 @@ public abstract class PlayerMixin extends LivingEntity {
             }
         } else {
             Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_SPEED)).setBaseValue(EntityAttributes.GENERIC_ATTACK_SPEED.getDefaultValue());
+        }
+        if (attritionLevel > 0) {
+            if (itemStackMainHand.getItem() instanceof AxeItem) {
+                Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_SPEED)).setBaseValue(3.5);
+            } else {
+                Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_SPEED)).setBaseValue(3.005);
+            }
+        } else {
+            if (swiftnessLevel <= 0) {
+                Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_SPEED)).setBaseValue(EntityAttributes.GENERIC_ATTACK_SPEED.getDefaultValue());
+            }
         }
     }
 }

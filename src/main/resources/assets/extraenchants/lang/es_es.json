@@ -58,5 +58,7 @@
   "enchantment.extra_enchantments.reach": "Alcance",
   "enchantment.extra_enchantments.reach.desc": "Extiende lo lejos que puedes llegar y pegar con una espada o herramienta",
   "enchantment.extra_enchantments.swiftness": "Agilidad",
-  "enchantment.extra_enchantments.swiftness.desc": "Aumenta la velocidad de ataque del item encantado"
+  "enchantment.extra_enchantments.swiftness.desc": "Aumenta la velocidad de ataque del item encantado",
+  "enchantment.extra_enchantments.attrition_curse": "Maldición de agotamiento",
+  "enchantment.extra_enchantments.attrition_curse.desc": "Reduce la velocidad de ataque del item encantado"
 }

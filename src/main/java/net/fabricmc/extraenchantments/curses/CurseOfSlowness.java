@@ -37,6 +37,6 @@ public class CurseOfSlowness extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        return other != Enchantments.FROST_WALKER && other != Enchantments.SOUL_SPEED;
+        return other != Enchantments.SOUL_SPEED;
     }
 }

@@ -48,6 +48,8 @@ public class ExtraEnchantsMain implements ModInitializer {
 
     public static final Enchantment REACH = new Reach(Enchantment.Rarity.RARE, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     public static final Enchantment SWIFTNESS = new Swiftness(Enchantment.Rarity.RARE, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+    public static final Enchantment CURSE_OF_ATTRITION = new CurseOfAttrition(Enchantment.Rarity.VERY_RARE, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+    public static final Enchantment OVERSHIELD = new Overshield(Enchantment.Rarity.VERY_RARE, new EquipmentSlot[]{EquipmentSlot.CHEST});
 
     @Override
     public void onInitialize() {
@@ -66,8 +68,8 @@ public class ExtraEnchantsMain implements ModInitializer {
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "swiftness"), SWIFTNESS);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "burning_thorns"), BURNING_THORNS);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "freezing_thorns"), FREEZING_THORNS);
+        Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "overshield"), OVERSHIELD);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "hellwalker"), HELLWALKER);
-        Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "target_lock"), TARGET_LOCK);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "spectral_vision"), SPECTRAL_VISION);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "electrified"), ELECTRIFIED);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "electrifying_shot"), ELECTRIFYING_SHOT);
@@ -76,6 +78,7 @@ public class ExtraEnchantsMain implements ModInitializer {
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "levitational_shot"), LEVITATIONAL_SHOT);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "incandescent"), HOT_SHOT);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "supercharge"), SUPERCHARGE);
+        Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "target_lock"), TARGET_LOCK);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "zeus_curse"), CURSE_OF_ZEUS);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "blindness_curse"), CURSE_OF_BLINDNESS);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "withering_curse"), CURSE_OF_WITHERING);
@@ -84,5 +87,6 @@ public class ExtraEnchantsMain implements ModInitializer {
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "incompatibility_curse"), CURSE_OF_INCOMPATIBILITY);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "slowness_curse"), CURSE_OF_SLOWNESS);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "undead_curse"), CURSE_OF_UNDEAD);
+        Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "attrition_curse"), CURSE_OF_ATTRITION);
     }
 }

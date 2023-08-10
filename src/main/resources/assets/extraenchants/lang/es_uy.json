@@ -60,5 +60,7 @@
   "enchantment.extra_enchantments.swiftness": "Agilidad",
   "enchantment.extra_enchantments.swiftness.desc": "Aumenta la velocidad de ataque del item encantado",
   "enchantment.extra_enchantments.attrition_curse": "Maldición de agotamiento",
-  "enchantment.extra_enchantments.attrition_curse.desc": "Reduce la velocidad de ataque del item encantado"
+  "enchantment.extra_enchantments.attrition_curse.desc": "Reduce la velocidad de ataque del item encantado",
+  "enchantment.extra_enchantments.overshield": "Sobreescudo",
+  "enchantment.extra_enchantments.overshield.desc": "Aumenta la salud del portador"
 }

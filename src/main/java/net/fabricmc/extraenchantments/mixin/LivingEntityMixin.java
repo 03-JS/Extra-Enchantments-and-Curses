@@ -53,7 +53,7 @@ public abstract class LivingEntityMixin extends Entity {
             Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(EntityAttributes.GENERIC_MAX_HEALTH.getDefaultValue() + overshieldLevel * 2);
         } else {
             Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(EntityAttributes.GENERIC_MAX_HEALTH.getDefaultValue());
-            this.setHealth((float) EntityAttributes.GENERIC_MAX_HEALTH.getDefaultValue());
+            // this.setHealth((float) EntityAttributes.GENERIC_MAX_HEALTH.getDefaultValue());
         }
     }
 }

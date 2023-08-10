@@ -18,12 +18,12 @@ public class Overshield extends Enchantment {
 
     @Override
     public int getMinPower(int level) {
-        return 11 + 21 * (level - 1);
+        return 1 + 8 * (level - 1);
     }
 
     @Override
     public int getMaxPower(int level) {
-        return super.getMinPower(level) + 51;
+        return super.getMinPower(level) + 30;
     }
 
     @Override
@@ -41,9 +41,13 @@ public class Overshield extends Enchantment {
         return true;
     }
 
-//    @Override
-//    public boolean isAvailableForEnchantedBookOffer() {
-//        return false;
-//    }
+    @Override
+    public boolean isAvailableForEnchantedBookOffer() {
+        return false;
+    }
 
+    @Override
+    public boolean isAvailableForRandomSelection() {
+        return false;
+    }
 }

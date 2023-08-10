@@ -36,6 +36,16 @@ public class HellWalker extends Enchantment {
         return true;
     }
 
+    @Override
+    public boolean isAvailableForEnchantedBookOffer() {
+        return false;
+    }
+
+    @Override
+    public boolean isAvailableForRandomSelection() {
+        return false;
+    }
+
     public int getMaxLevel() {
         return 1;
     }

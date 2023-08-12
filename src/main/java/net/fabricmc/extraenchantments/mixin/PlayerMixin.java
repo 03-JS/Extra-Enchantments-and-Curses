@@ -54,6 +54,7 @@ public abstract class PlayerMixin extends LivingEntity {
         int reachLevel = EnchantmentHelper.getLevel(ExtraEnchantsMain.REACH, itemStackMainHand);
         int swiftnessLevel = EnchantmentHelper.getLevel(ExtraEnchantsMain.SWIFTNESS, itemStackMainHand);
         int attritionLevel = EnchantmentHelper.getLevel(ExtraEnchantsMain.CURSE_OF_ATTRITION, itemStackMainHand);
+        int overshieldLevel = EnchantmentHelper.getLevel(ExtraEnchantsMain.OVERSHIELD, itemStackChest);
         if (slownessLevel > 0) {
             this.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 20, 3, false, false, false));
             this.addStatusEffect(new StatusEffectInstance(StatusEffects.MINING_FATIGUE, 20, 3, false, false, false));
@@ -111,6 +112,11 @@ public abstract class PlayerMixin extends LivingEntity {
             if (swiftnessLevel <= 0) {
                 Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_SPEED)).setBaseValue(EntityAttributes.GENERIC_ATTACK_SPEED.getDefaultValue());
             }
+        }
+        if (overshieldLevel > 0) {
+            Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(EntityAttributes.GENERIC_MAX_HEALTH.getDefaultValue() + overshieldLevel * 2);
+        } else {
+            Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(EntityAttributes.GENERIC_MAX_HEALTH.getDefaultValue());
         }
     }
 }

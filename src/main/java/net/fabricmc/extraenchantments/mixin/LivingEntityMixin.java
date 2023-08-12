@@ -29,31 +29,12 @@ public abstract class LivingEntityMixin extends Entity {
         super(type, world);
     }
 
-    @Shadow
-    public abstract ItemStack getEquippedStack(EquipmentSlot slot);
-
-    @Shadow @Nullable public abstract EntityAttributeInstance getAttributeInstance(EntityAttribute attribute);
-
-    @Shadow public abstract void setHealth(float health);
-
     @Inject(method = "applyMovementEffects", at = @At("HEAD"))
     private void applyMovementEffects(BlockPos pos, CallbackInfo ci) {
         LivingEntity casted = (LivingEntity) (Object) this;
         int i = EnchantmentHelper.getEquipmentLevel(ExtraEnchantsMain.HELLWALKER, casted);
         if (i > 0) {
             HellWalker.freezeLava(casted, this.getWorld(), pos);
-        }
-    }
-
-    @Inject(method = "tick", at = @At("HEAD"))
-    private void tick (CallbackInfo ci) {
-        ItemStack itemStackChest = this.getEquippedStack(EquipmentSlot.CHEST);
-        int overshieldLevel = EnchantmentHelper.getLevel(ExtraEnchantsMain.OVERSHIELD, itemStackChest);
-        if (overshieldLevel > 0) {
-            Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(EntityAttributes.GENERIC_MAX_HEALTH.getDefaultValue() + overshieldLevel * 2);
-        } else {
-            Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(EntityAttributes.GENERIC_MAX_HEALTH.getDefaultValue());
-            // this.setHealth((float) EntityAttributes.GENERIC_MAX_HEALTH.getDefaultValue());
         }
     }
 }

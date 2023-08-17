@@ -19,7 +19,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.extraenchantments.ExtraEnchantsMain"
+      "net.js03.extraenchantments.ExtraEnchantsMain"
     ]
   },
   "mixins": [

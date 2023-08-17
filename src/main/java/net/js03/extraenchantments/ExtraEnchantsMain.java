@@ -29,7 +29,7 @@ public class ExtraEnchantsMain implements ModInitializer {
     private static final Enchantment FRENZY = new Frenzy(Enchantment.Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     private static final Enchantment GUARDING_STRIKE = new GuardingStrike(Enchantment.Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     private static final Enchantment PAIN_CYCLE = new PainCycle(Enchantment.Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
-    private static final Enchantment SOUL_REAPER = new SoulReaper(Enchantment.Rarity.VERY_RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+    private static final Enchantment SOUL_REAPER = new SoulReaper(Enchantment.Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     private static final Enchantment CURSE_OF_ZEUS = new CurseOfZeus(Enchantment.Rarity.VERY_RARE, new EquipmentSlot[]{EquipmentSlot.CHEST, EquipmentSlot.HEAD, EquipmentSlot.FEET, EquipmentSlot.LEGS});
     private static final Enchantment ELECTRIFIED = new Electrified(Enchantment.Rarity.VERY_RARE, new EquipmentSlot[]{EquipmentSlot.CHEST, EquipmentSlot.HEAD, EquipmentSlot.FEET, EquipmentSlot.LEGS});
     public static final Enchantment CURSE_OF_BLINDNESS = new CurseOfBlindness(Enchantment.Rarity.VERY_RARE, new EquipmentSlot[]{EquipmentSlot.HEAD});
@@ -46,7 +46,6 @@ public class ExtraEnchantsMain implements ModInitializer {
     private static final Enchantment ENIGMA_RESONATOR = new EnigmaResonator(Enchantment.Rarity.RARE, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     private static final Enchantment TARGET_LOCK = new TargetLock(Enchantment.Rarity.VERY_RARE, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     public static final Enchantment SUPERCHARGE = new Supercharge(Enchantment.Rarity.VERY_RARE, new EquipmentSlot[]{EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND});
-
     public static final Enchantment REACH = new Reach(Enchantment.Rarity.RARE, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     public static final Enchantment SWIFTNESS = new Swiftness(Enchantment.Rarity.RARE, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     public static final Enchantment CURSE_OF_ATTRITION = new CurseOfAttrition(Enchantment.Rarity.VERY_RARE, new EquipmentSlot[]{EquipmentSlot.MAINHAND});

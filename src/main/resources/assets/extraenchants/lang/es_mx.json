@@ -62,5 +62,7 @@
   "enchantment.extra_enchantments.attrition_curse": "Maldición de agotamiento",
   "enchantment.extra_enchantments.attrition_curse.desc": "Reduce la velocidad de ataque del item encantado",
   "enchantment.extra_enchantments.overshield": "Sobreescudo",
-  "enchantment.extra_enchantments.overshield.desc": "Aumenta la salud del portador"
+  "enchantment.extra_enchantments.overshield.desc": "Aumenta la salud del portador",
+  "enchantment.extra_enchantments.soul_reaper": "Segador de almas",
+  "enchantment.extra_enchantments.soul_reaper.desc": "Reduce el daño del objeto a cambio de la posibilidad de curar al usuario por cada golpe a un mob hostil o neutral"
 }

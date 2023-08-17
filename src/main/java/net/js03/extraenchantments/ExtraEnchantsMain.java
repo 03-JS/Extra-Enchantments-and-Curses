@@ -3,8 +3,6 @@ package net.js03.extraenchantments;
 import net.fabricmc.api.ModInitializer;
 import net.js03.extraenchantments.curses.*;
 import net.js03.extraenchantments.enchantments.*;
-import net.js03.extraenchantments.curses.*;
-import net.js03.extraenchantments.enchantments.*;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;

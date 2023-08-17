@@ -62,5 +62,7 @@
   "enchantment.extra_enchantments.attrition_curse": "Curse of Attrition",
   "enchantment.extra_enchantments.attrition_curse.desc": "Decreases the enchanted item's attack speed",
   "enchantment.extra_enchantments.overshield": "Overshield",
-  "enchantment.extra_enchantments.overshield.desc": "Increases the wearer's health"
+  "enchantment.extra_enchantments.overshield.desc": "Increases the wearer's health",
+  "enchantment.extra_enchantments.soul_reaper": "Soul Reaper",
+  "enchantment.extra_enchantments.soul_reaper.desc": "Reduces the item's damage in exchange for a chance to heal the user with every hit on a neutral or hostile mob"
 }

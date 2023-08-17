@@ -9,6 +9,8 @@ import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.mob.*;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.AxeItem;
+import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.tag.DamageTypeTags;
@@ -17,6 +19,9 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 
 public class HealthForBlood extends Enchantment {
+
+    private float percentage = 0.04f;
+
     public HealthForBlood(Rarity weight, EnchantmentTarget type, EquipmentSlot[] slotTypes) {
         super(weight, type, slotTypes);
     }
@@ -37,8 +42,12 @@ public class HealthForBlood extends Enchantment {
     }
 
     @Override
+    public boolean isAcceptableItem(ItemStack stack) {
+        return super.isAcceptableItem(stack) || stack.getItem() instanceof AxeItem;
+    }
+
+    @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        double percentage = 0.04;
         if (target instanceof HostileEntity || target instanceof PlayerEntity || target instanceof HoglinEntity || target instanceof BeeEntity
                 || target instanceof DolphinEntity || target instanceof GoatEntity || target instanceof GolemEntity || target instanceof LlamaEntity
                 || target instanceof TraderLlamaEntity || target instanceof PandaEntity || target instanceof PolarBearEntity || target instanceof WolfEntity
@@ -47,7 +56,7 @@ public class HealthForBlood extends Enchantment {
             if (!target.isAlive() && !((LivingEntity) target).getRecentDamageSource().isIn(DamageTypeTags.IS_PROJECTILE)) {
                 percentage *= level;
                 user.getWorld().playSound(null, user.getBlockPos(), SoundEvents.PARTICLE_SOUL_ESCAPE, SoundCategory.MASTER, 3f, 1f);
-                user.heal((float) (((LivingEntity) target).getMaxHealth() * percentage));
+                user.heal((((LivingEntity) target).getMaxHealth() * percentage));
             }
         }
     }

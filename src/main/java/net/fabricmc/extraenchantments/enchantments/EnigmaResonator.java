@@ -31,7 +31,7 @@ public class EnigmaResonator extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        return !(other instanceof PainCycle) && !(other instanceof HealthForBlood) && !(other instanceof Frenzy) && !(other instanceof GuardingStrike);
+        return !(other instanceof PainCycle) && !(other instanceof HealthForBlood) && !(other instanceof Frenzy) && !(other instanceof GuardingStrike) && !(other instanceof SoulReaper);
     }
 
     @Override

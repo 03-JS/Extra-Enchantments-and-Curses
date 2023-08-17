@@ -29,6 +29,7 @@ public class ExtraEnchantsMain implements ModInitializer {
     private static final Enchantment FRENZY = new Frenzy(Enchantment.Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     private static final Enchantment GUARDING_STRIKE = new GuardingStrike(Enchantment.Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     private static final Enchantment PAIN_CYCLE = new PainCycle(Enchantment.Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+    private static final Enchantment SOUL_REAPER = new SoulReaper(Enchantment.Rarity.VERY_RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     private static final Enchantment CURSE_OF_ZEUS = new CurseOfZeus(Enchantment.Rarity.VERY_RARE, new EquipmentSlot[]{EquipmentSlot.CHEST, EquipmentSlot.HEAD, EquipmentSlot.FEET, EquipmentSlot.LEGS});
     private static final Enchantment ELECTRIFIED = new Electrified(Enchantment.Rarity.VERY_RARE, new EquipmentSlot[]{EquipmentSlot.CHEST, EquipmentSlot.HEAD, EquipmentSlot.FEET, EquipmentSlot.LEGS});
     public static final Enchantment CURSE_OF_BLINDNESS = new CurseOfBlindness(Enchantment.Rarity.VERY_RARE, new EquipmentSlot[]{EquipmentSlot.HEAD});
@@ -60,6 +61,7 @@ public class ExtraEnchantsMain implements ModInitializer {
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "frenzy"), FRENZY);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "guarding_strike"), GUARDING_STRIKE);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "pain_cycle"), PAIN_CYCLE);
+        Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "soul_reaper"), SOUL_REAPER);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "freezing_aspect"), FREEZING_ASPECT);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "illagers_bane"), ILLAGERS_BANE);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "fishermans_blade"), FISHERMANS_BLADE);

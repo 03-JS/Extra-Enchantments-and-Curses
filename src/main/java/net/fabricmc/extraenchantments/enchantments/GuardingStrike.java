@@ -11,6 +11,8 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.*;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.AxeItem;
+import net.minecraft.item.ItemStack;
 import net.minecraft.registry.tag.DamageTypeTags;
 
 public class GuardingStrike extends Enchantment {
@@ -36,6 +38,11 @@ public class GuardingStrike extends Enchantment {
     @Override
     protected boolean canAccept(Enchantment other) {
         return !(other instanceof Frenzy) && !(other instanceof HealthForBlood);
+    }
+
+    @Override
+    public boolean isAcceptableItem(ItemStack stack) {
+        return super.isAcceptableItem(stack) || stack.getItem() instanceof AxeItem;
     }
 
     @Override

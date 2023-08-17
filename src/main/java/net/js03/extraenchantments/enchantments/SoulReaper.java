@@ -34,12 +34,12 @@ public class SoulReaper extends Enchantment {
 
     @Override
     public int getMinPower(int level) {
-        return 8 + (level - 1) * 9;
+        return 5 + (level - 1) * 9;
     }
 
     @Override
     public int getMaxPower(int level) {
-        return this.getMinPower(level) + 25;
+        return this.getMinPower(level) + 20;
     }
 
     @Override

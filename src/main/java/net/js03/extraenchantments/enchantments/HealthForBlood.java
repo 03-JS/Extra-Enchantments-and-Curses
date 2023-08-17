@@ -20,8 +20,6 @@ import net.minecraft.sound.SoundEvents;
 
 public class HealthForBlood extends Enchantment {
 
-    private float percentage = 0.04f;
-
     public HealthForBlood(Rarity weight, EnchantmentTarget type, EquipmentSlot[] slotTypes) {
         super(weight, type, slotTypes);
     }
@@ -54,6 +52,7 @@ public class HealthForBlood extends Enchantment {
                 || target instanceof PufferfishEntity || target instanceof SlimeEntity || target instanceof MagmaCubeEntity || target instanceof PhantomEntity
                 || target instanceof EnderDragonEntity) {
             if (!target.isAlive() && !((LivingEntity) target).getRecentDamageSource().isIn(DamageTypeTags.IS_PROJECTILE)) {
+                float percentage = 0.04f;
                 percentage *= level;
                 user.getWorld().playSound(null, user.getBlockPos(), SoundEvents.PARTICLE_SOUL_ESCAPE, SoundCategory.MASTER, 3f, 1f);
                 user.heal((((LivingEntity) target).getMaxHealth() * percentage));

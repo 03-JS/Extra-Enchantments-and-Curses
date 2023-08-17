@@ -34,8 +34,8 @@ public class CurseOfNausea extends Enchantment {
         return true;
     }
 
-    @Override
-    public void onUserDamaged(LivingEntity user, Entity attacker, int level) {
-        user.addStatusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 320, 0, false, false, true));
-    }
+//    @Override
+//    public void onUserDamaged(LivingEntity user, Entity attacker, int level) {
+//        user.addStatusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 320, 0, false, false, true));
+//    }
 }

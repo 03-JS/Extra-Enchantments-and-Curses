@@ -44,7 +44,7 @@ public class ExtraEnchantsMain implements ModInitializer {
     public static final Enchantment HOT_SHOT = new HotShot(Enchantment.Rarity.RARE, new EquipmentSlot[]{EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND});
     public static final Enchantment CURSE_OF_WEAKNESS = new CurseOfWeakness(Enchantment.Rarity.VERY_RARE, new EquipmentSlot[]{EquipmentSlot.CHEST, EquipmentSlot.HEAD, EquipmentSlot.FEET, EquipmentSlot.LEGS});
     private static final Enchantment ENIGMA_RESONATOR = new EnigmaResonator(Enchantment.Rarity.RARE, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
-    private static final Enchantment TARGET_LOCK = new TargetLock(Enchantment.Rarity.VERY_RARE, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+    private static final Enchantment TARGET_LOCK = new TargetLock(Enchantment.Rarity.VERY_RARE, new EquipmentSlot[]{EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND});
     public static final Enchantment SUPERCHARGE = new Supercharge(Enchantment.Rarity.VERY_RARE, new EquipmentSlot[]{EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND});
     public static final Enchantment REACH = new Reach(Enchantment.Rarity.RARE, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     public static final Enchantment SWIFTNESS = new Swiftness(Enchantment.Rarity.RARE, new EquipmentSlot[]{EquipmentSlot.MAINHAND});

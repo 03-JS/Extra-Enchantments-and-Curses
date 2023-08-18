@@ -34,7 +34,7 @@ public class ExtraEnchantsMain implements ModInitializer {
     private static final Enchantment ELECTRIFIED = new Electrified(Enchantment.Rarity.VERY_RARE, new EquipmentSlot[]{EquipmentSlot.CHEST, EquipmentSlot.HEAD, EquipmentSlot.FEET, EquipmentSlot.LEGS});
     public static final Enchantment CURSE_OF_BLINDNESS = new CurseOfBlindness(Enchantment.Rarity.VERY_RARE, new EquipmentSlot[]{EquipmentSlot.HEAD});
     public static final Enchantment CURSE_OF_WITHERING = new CurseOfWithering(Enchantment.Rarity.VERY_RARE, new EquipmentSlot[]{EquipmentSlot.CHEST, EquipmentSlot.HEAD, EquipmentSlot.FEET, EquipmentSlot.LEGS});
-    public static final Enchantment CURSE_OF_UNDEAD = new CurseOfUndead(Enchantment.Rarity.VERY_RARE, new EquipmentSlot[]{EquipmentSlot.CHEST, EquipmentSlot.HEAD, EquipmentSlot.FEET, EquipmentSlot.LEGS});
+    public static final Enchantment CURSE_OF_UNDEAD = new CurseOfUndead(Enchantment.Rarity.VERY_RARE, new EquipmentSlot[]{EquipmentSlot.HEAD});
     public static final Enchantment CURSE_OF_NAUSEA = new CurseOfNausea(Enchantment.Rarity.VERY_RARE, new EquipmentSlot[]{EquipmentSlot.HEAD});
     public static final Enchantment CURSE_OF_SLOWNESS = new CurseOfSlowness(Enchantment.Rarity.VERY_RARE, new EquipmentSlot[]{EquipmentSlot.FEET});
     private static final Enchantment CURSE_OF_INCOMPATIBILITY = new CurseOfIncompatibility(Enchantment.Rarity.VERY_RARE, new EquipmentSlot[]{EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET, EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND});

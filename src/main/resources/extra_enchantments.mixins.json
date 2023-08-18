@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "package": "net.js03.extraenchantments.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "extra_enchantments.refmap.json",
+  "mixins": [
+  ],
+  "client":[
+    "PlayerMixin",
+    "LivingEntityMixin",
+    "CrossbowMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8.4"
+}

@@ -4,9 +4,10 @@
   "package": "net.js03.extraenchantments.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "PlayerMixin",
     "CrossbowMixin",
-    "LivingEntityMixin"
+    "LivingEntityMixin",
+    "MobMixin",
+    "PlayerMixin"
   ],
   "client": [
   ],

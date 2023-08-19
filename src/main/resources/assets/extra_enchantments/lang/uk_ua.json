@@ -62,5 +62,7 @@
   "enchantment.extra_enchantments.attrition_curse": "Прокляття виснаження",
   "enchantment.extra_enchantments.attrition_curse.desc": "Зменшує швидкість атаки зачарованих предметів",
   "enchantment.extra_enchantments.overshield": "Надзахист",
-  "enchantment.extra_enchantments.overshield.desc": "Збільшує здоров'я носія"
+  "enchantment.extra_enchantments.overshield.desc": "Збільшує здоров'я носія",
+  "enchantment.extra_enchantments.soul_reaper": "Жнець душ",
+  "enchantment.extra_enchantments.soul_reaper.desc": "Зменшує шкоду предмета натомість дає шанс зцілити гравця від атаки нейтрального чи ворожого моба"
 }

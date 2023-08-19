@@ -15,8 +15,6 @@ import net.minecraft.item.AxeItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.tag.DamageTypeTags;
 
-import java.util.Objects;
-
 public class GuardingStrike extends Enchantment {
     public GuardingStrike(Rarity weight, EnchantmentTarget type, EquipmentSlot[] slotTypes) {
         super(weight, type, slotTypes);
@@ -47,16 +45,16 @@ public class GuardingStrike extends Enchantment {
         return super.isAcceptableItem(stack) || stack.getItem() instanceof AxeItem;
     }
 
-    @Override
-    public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        if (target instanceof HostileEntity || target instanceof PlayerEntity || target instanceof HoglinEntity || target instanceof BeeEntity
-                || target instanceof DolphinEntity || target instanceof GoatEntity || target instanceof GolemEntity || target instanceof LlamaEntity
-                || target instanceof TraderLlamaEntity || target instanceof PandaEntity || target instanceof PolarBearEntity || target instanceof WolfEntity
-                || target instanceof PufferfishEntity || target instanceof SlimeEntity || target instanceof MagmaCubeEntity || target instanceof PhantomEntity
-                || target instanceof EnderDragonEntity) {
-            if (((LivingEntity) target).isDead() && !Objects.requireNonNull(((LivingEntity) target).getRecentDamageSource()).isIn(DamageTypeTags.IS_PROJECTILE)) {
-                user.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 120, level - 1, false, false, true));
-            }
-        }
-    }
+//    @Override
+//    public void onTargetDamaged(LivingEntity user, Entity target, int level) {
+//        if (target instanceof HostileEntity || target instanceof PlayerEntity || target instanceof HoglinEntity || target instanceof BeeEntity
+//                || target instanceof DolphinEntity || target instanceof GoatEntity || target instanceof GolemEntity || target instanceof LlamaEntity
+//                || target instanceof TraderLlamaEntity || target instanceof PandaEntity || target instanceof PolarBearEntity || target instanceof WolfEntity
+//                || target instanceof PufferfishEntity || target instanceof SlimeEntity || target instanceof MagmaCubeEntity || target instanceof PhantomEntity
+//                || target instanceof EnderDragonEntity) {
+//            if (((LivingEntity) target).isDead() && !((LivingEntity) target).getRecentDamageSource().isIn(DamageTypeTags.IS_PROJECTILE)) {
+//                user.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 120, level - 1, false, false, true));
+//            }
+//        }
+//    }
 }

@@ -15,6 +15,8 @@ import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 
+import java.util.Objects;
+
 public class PainCycle extends Enchantment {
 
     private int hits;
@@ -56,7 +58,7 @@ public class PainCycle extends Enchantment {
                 || target instanceof TraderLlamaEntity || target instanceof PandaEntity || target instanceof PolarBearEntity || target instanceof WolfEntity
                 || target instanceof PufferfishEntity || target instanceof SlimeEntity || target instanceof MagmaCubeEntity || target instanceof PhantomEntity
                 || target instanceof EnderDragonEntity) {
-            if (!((LivingEntity) target).getRecentDamageSource().isIn(DamageTypeTags.IS_PROJECTILE)) {
+            if (!Objects.requireNonNull(((LivingEntity) target).getRecentDamageSource()).isIn(DamageTypeTags.IS_PROJECTILE)) {
                 if (hits >= 7) {
                     if (((LivingEntity) target).getRecentDamageSource() != null) {
                         target.damage(user.getDamageSources().magic(), 20);

@@ -12,9 +12,11 @@ import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class SoulReaper extends Enchantment {
@@ -65,12 +67,14 @@ public class SoulReaper extends Enchantment {
                 || target instanceof PufferfishEntity || target instanceof SlimeEntity || target instanceof MagmaCubeEntity || target instanceof PhantomEntity
                 || target instanceof EnderDragonEntity) {
 //            float randomNumber = rng.nextFloat(0.03f, 0.06f);
-            float randomNumber = rng.nextFloat(0.5f, 2f);
+            if (((LivingEntity) target).isDead() && !Objects.requireNonNull(((LivingEntity) target).getRecentDamageSource()).isIn(DamageTypeTags.IS_PROJECTILE)) {
+                float randomNumber = rng.nextFloat(0.5f, 2f);
 //            percentage *= randomNumber;
-            int randomNumber1 = rng.nextInt(6);
-            if (randomNumber1 <= 1) {
-                user.getWorld().playSound(null, user.getBlockPos(), SoundEvents.PARTICLE_SOUL_ESCAPE, SoundCategory.MASTER, 3f, 1f);
-                user.heal(randomNumber /* * percentage */);
+                int randomNumber1 = rng.nextInt(6);
+                if (randomNumber1 <= 1) {
+                    user.getWorld().playSound(null, user.getBlockPos(), SoundEvents.PARTICLE_SOUL_ESCAPE, SoundCategory.MASTER, 3f, 1f);
+                    user.heal(randomNumber /* * percentage */);
+                }
             }
 //            percentage = 1;
         }

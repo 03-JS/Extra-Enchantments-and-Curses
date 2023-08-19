@@ -18,6 +18,8 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 
+import java.util.Objects;
+
 public class HealthForBlood extends Enchantment {
 
     public HealthForBlood(Rarity weight, EnchantmentTarget type, EquipmentSlot[] slotTypes) {
@@ -51,7 +53,7 @@ public class HealthForBlood extends Enchantment {
                 || target instanceof TraderLlamaEntity || target instanceof PandaEntity || target instanceof PolarBearEntity || target instanceof WolfEntity
                 || target instanceof PufferfishEntity || target instanceof SlimeEntity || target instanceof MagmaCubeEntity || target instanceof PhantomEntity
                 || target instanceof EnderDragonEntity) {
-            if (!target.isAlive() && !((LivingEntity) target).getRecentDamageSource().isIn(DamageTypeTags.IS_PROJECTILE)) {
+            if (!target.isAlive() && !Objects.requireNonNull(((LivingEntity) target).getRecentDamageSource()).isIn(DamageTypeTags.IS_PROJECTILE)) {
                 float percentage = 0.04f;
                 percentage *= level;
                 user.getWorld().playSound(null, user.getBlockPos(), SoundEvents.PARTICLE_SOUL_ESCAPE, SoundCategory.MASTER, 3f, 1f);

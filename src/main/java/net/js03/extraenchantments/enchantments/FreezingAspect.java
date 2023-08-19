@@ -9,6 +9,8 @@ import net.minecraft.entity.mob.MagmaCubeEntity;
 import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.world.dimension.DimensionType;
 
+import java.util.Objects;
+
 public class FreezingAspect extends Enchantment {
     public FreezingAspect(Rarity weight, EnchantmentTarget type, EquipmentSlot[] slotTypes) {
         super(weight, type, slotTypes);
@@ -37,7 +39,7 @@ public class FreezingAspect extends Enchantment {
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
         if (target instanceof LivingEntity && !(target instanceof BlazeEntity) && !(target instanceof MagmaCubeEntity)) {
-            if (!user.getWorld().getDimension().ultrawarm() && !((LivingEntity) target).getRecentDamageSource().isIn(DamageTypeTags.IS_PROJECTILE)) {
+            if (!user.getWorld().getDimension().ultrawarm() && !Objects.requireNonNull(((LivingEntity) target).getRecentDamageSource()).isIn(DamageTypeTags.IS_PROJECTILE)) {
                 target.setFrozenTicks(level * 360);
             }
         }

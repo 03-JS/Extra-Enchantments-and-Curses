@@ -15,6 +15,8 @@ import net.minecraft.item.AxeItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.tag.DamageTypeTags;
 
+import java.util.Objects;
+
 public class Frenzy extends Enchantment {
     public Frenzy(Rarity weight, EnchantmentTarget type, EquipmentSlot[] slotTypes) {
         super(weight, type, slotTypes);
@@ -53,7 +55,7 @@ public class Frenzy extends Enchantment {
                 || target instanceof TraderLlamaEntity || target instanceof PandaEntity || target instanceof PolarBearEntity || target instanceof WolfEntity
                 || target instanceof PufferfishEntity || target instanceof SlimeEntity || target instanceof MagmaCubeEntity || target instanceof PhantomEntity
                 || target instanceof EnderDragonEntity) {
-            if (((LivingEntity) target).isDead() && !((LivingEntity) target).getRecentDamageSource().isIn(DamageTypeTags.IS_PROJECTILE)) {
+            if (((LivingEntity) target).isDead() && !Objects.requireNonNull(((LivingEntity) target).getRecentDamageSource()).isIn(DamageTypeTags.IS_PROJECTILE)) {
                 if (rng == 0) {
                     user.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 120, level - 1, false, false, true));
                     user.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 120, level - 1, false, false, true));

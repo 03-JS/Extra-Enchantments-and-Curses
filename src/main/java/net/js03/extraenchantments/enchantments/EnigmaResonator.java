@@ -36,7 +36,7 @@ public class EnigmaResonator extends Enchantment {
 
     @Override
     public boolean isAcceptableItem(ItemStack stack) {
-        return stack.getItem() instanceof AxeItem;
+        return stack.getItem() instanceof AxeItem || super.isAcceptableItem(stack);
     }
 
     @Override

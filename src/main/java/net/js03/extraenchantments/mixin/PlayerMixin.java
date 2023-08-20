@@ -2,12 +2,25 @@ package net.js03.extraenchantments.mixin;
 
 import net.js03.extraenchantments.ExtraEnchantsMain;
 import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.animal.*;
+import net.minecraft.world.entity.animal.goat.Goat;
+import net.minecraft.world.entity.animal.horse.Llama;
+import net.minecraft.world.entity.animal.horse.TraderLlama;
+import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
+import net.minecraft.world.entity.monster.MagmaCube;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.monster.Phantom;
+import net.minecraft.world.entity.monster.Slime;
+import net.minecraft.world.entity.monster.hoglin.Hoglin;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ItemStack;
@@ -21,6 +34,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Objects;
+import java.util.Random;
 
 @Mixin(Player.class)
 public abstract class PlayerMixin extends LivingEntity {
@@ -29,6 +43,9 @@ public abstract class PlayerMixin extends LivingEntity {
 //    public abstract PlayerAbilities getAbilities();
 
     @Shadow public abstract ItemStack getItemBySlot(EquipmentSlot pSlot);
+
+    private int painCycleHits = 0;
+    private Random rng = new Random();
 
     public PlayerMixin(EntityType<? extends LivingEntity> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -41,6 +58,8 @@ public abstract class PlayerMixin extends LivingEntity {
         ItemStack itemStackChest = this.getItemBySlot(EquipmentSlot.CHEST);
         ItemStack itemStackLegs = this.getItemBySlot(EquipmentSlot.LEGS);
         ItemStack itemStackMainHand = this.getItemBySlot(EquipmentSlot.MAINHAND);
+
+        // Armor level
         int slownessLevel = EnchantmentHelper.getTagEnchantmentLevel(ExtraEnchantsMain.CURSE_OF_SLOWNESS.get(), itemStackFeet);
         int blindnessLevel = EnchantmentHelper.getTagEnchantmentLevel(ExtraEnchantsMain.CURSE_OF_BLINDNESS.get(), itemStackHead);
         int nauseaLevel = EnchantmentHelper.getTagEnchantmentLevel(ExtraEnchantsMain.CURSE_OF_NAUSEA.get(), itemStackHead);
@@ -50,10 +69,14 @@ public abstract class PlayerMixin extends LivingEntity {
         int weaknessLevelH = EnchantmentHelper.getTagEnchantmentLevel(ExtraEnchantsMain.CURSE_OF_WEAKNESS.get(), itemStackHead);
         int undeadLevel = EnchantmentHelper.getTagEnchantmentLevel(ExtraEnchantsMain.CURSE_OF_UNDEAD.get(), itemStackHead);
         int spectralLevel = EnchantmentHelper.getTagEnchantmentLevel(ExtraEnchantsMain.SPECTRAL_VISION.get(), itemStackHead);
+        int overshieldLevel = EnchantmentHelper.getTagEnchantmentLevel(ExtraEnchantsMain.OVERSHIELD.get(), itemStackChest);
+
+        // Sword & Tools level
         int reachLevel = EnchantmentHelper.getTagEnchantmentLevel(ExtraEnchantsMain.REACH.get(), itemStackMainHand);
         int swiftnessLevel = EnchantmentHelper.getTagEnchantmentLevel(ExtraEnchantsMain.SWIFTNESS.get(), itemStackMainHand);
         int attritionLevel = EnchantmentHelper.getTagEnchantmentLevel(ExtraEnchantsMain.CURSE_OF_ATTRITION.get(), itemStackMainHand);
-        int overshieldLevel = EnchantmentHelper.getTagEnchantmentLevel(ExtraEnchantsMain.OVERSHIELD.get(), itemStackChest);
+
+        // Armor behaviour
         if (slownessLevel > 0) {
             this.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, 3, false, false, false));
             this.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 20, 3, false, false, false));
@@ -77,6 +100,13 @@ public abstract class PlayerMixin extends LivingEntity {
         if (spectralLevel > 0) {
             this.removeEffect(MobEffects.DARKNESS);
         }
+        if (overshieldLevel > 0) {
+            Objects.requireNonNull(this.getAttribute(Attributes.MAX_HEALTH)).setBaseValue(Attributes.MAX_HEALTH.getDefaultValue() + overshieldLevel * 2);
+        } else {
+            Objects.requireNonNull(this.getAttribute(Attributes.MAX_HEALTH)).setBaseValue(Attributes.MAX_HEALTH.getDefaultValue());
+        }
+
+        // Sword & Tools behaviour
         if (reachLevel > 0) {
             Objects.requireNonNull(this.getAttribute(ForgeMod.BLOCK_REACH.get())).setBaseValue(reachLevel + ForgeMod.BLOCK_REACH.get().getDefaultValue() + 1);
             if (reachLevel <= 1) {
@@ -112,10 +142,107 @@ public abstract class PlayerMixin extends LivingEntity {
                 Objects.requireNonNull(this.getAttribute(Attributes.ATTACK_SPEED)).setBaseValue(Attributes.ATTACK_SPEED.getDefaultValue());
             }
         }
-        if (overshieldLevel > 0) {
-            Objects.requireNonNull(this.getAttribute(Attributes.MAX_HEALTH)).setBaseValue(Attributes.MAX_HEALTH.getDefaultValue() + overshieldLevel * 2);
-        } else {
-            Objects.requireNonNull(this.getAttribute(Attributes.MAX_HEALTH)).setBaseValue(Attributes.MAX_HEALTH.getDefaultValue());
+    }
+
+    @Inject(method = "attack", at = @At("TAIL"))
+    private void attack(Entity target, CallbackInfo ci) {
+        ItemStack itemStackMainHand = this.getItemBySlot(EquipmentSlot.MAINHAND);
+
+        int freezingAspectLevel = EnchantmentHelper.getTagEnchantmentLevel(ExtraEnchantsMain.FREEZING_ASPECT.get(), itemStackMainHand);
+        if (target instanceof LivingEntity) {
+            if (freezingAspectLevel > 0 && !target.isFullyFrozen()) {
+                target.setTicksFrozen(freezingAspectLevel * 360);
+            }
+        }
+
+        int enigmaResonatorLevel = EnchantmentHelper.getTagEnchantmentLevel(ExtraEnchantsMain.ENIGMA_RESONATOR.get(), itemStackMainHand);
+        if (target instanceof LivingEntity) {
+            if (enigmaResonatorLevel > 0) {
+                int rng = (int) (Math.random() * 35);
+                if (rng <= enigmaResonatorLevel) {
+                    if (((LivingEntity) target).getLastDamageSource() != null) {
+                        this.level().playSound(null, target.blockPosition(), SoundEvents.ARROW_HIT_PLAYER, SoundSource.MASTER, 1f, 1f);
+                        target.hurt(target.damageSources().generic(), (float) (this.getHealth() * 0.75));
+                    }
+                }
+            }
+        }
+
+        boolean isEntityHostileOrNeutral = target instanceof Monster || target instanceof Player || target instanceof Hoglin || target instanceof Bee
+                || target instanceof Dolphin || target instanceof Goat || target instanceof IronGolem || target instanceof SnowGolem || target instanceof Llama
+                || target instanceof TraderLlama || target instanceof Panda || target instanceof PolarBear || target instanceof Wolf
+                || target instanceof Pufferfish || target instanceof Slime || target instanceof MagmaCube || target instanceof Phantom
+                || target instanceof EnderDragon;
+
+        int painCycleLevel = EnchantmentHelper.getTagEnchantmentLevel(ExtraEnchantsMain.PAIN_CYCLE.get(), itemStackMainHand);
+        if (target instanceof LivingEntity) {
+            if (painCycleLevel > 0) {
+                if (isEntityHostileOrNeutral) {
+                    if (painCycleHits >= 3) {
+                        if (((LivingEntity) target).getLastDamageSource() != null) {
+                            target.hurt(this.damageSources().magic(), 20);
+                            this.level().playSound(null, target.blockPosition(), SoundEvents.ARROW_HIT_PLAYER, SoundSource.MASTER, 1f, 1f);
+                            painCycleHits = 0;
+                        }
+                    } else {
+                        painCycleHits++;
+                        if (this.getHealth() <= 1) {
+                            this.hurt(this.damageSources().magic(), 100);
+                        } else {
+                            this.setHealth(this.getHealth() - 1f);
+                        }
+                        this.level().playSound(null, this.blockPosition(), SoundEvents.SOUL_ESCAPE, SoundSource.MASTER, 3f, 1f);
+                    }
+                }
+            }
+        }
+
+        int soulReaperLevel = EnchantmentHelper.getTagEnchantmentLevel(ExtraEnchantsMain.SOUL_REAPER.get(), itemStackMainHand);
+        if (target instanceof LivingEntity) {
+            if (soulReaperLevel > 0) {
+                if (isEntityHostileOrNeutral) {
+                    int healingAmount = rng.nextInt(1,5);
+                    int healingChance = rng.nextInt(6);
+                    if (healingChance <= 1) {
+                        this.level().playSound(null, this.blockPosition(), SoundEvents.SOUL_ESCAPE, SoundSource.MASTER, 3f, 1f);
+                        this.heal(healingAmount);
+                    }
+                }
+            }
+        }
+
+        int frenzyLevel = EnchantmentHelper.getTagEnchantmentLevel(ExtraEnchantsMain.FRENZY.get(), itemStackMainHand);
+        if (target instanceof LivingEntity) {
+            if (frenzyLevel > 0) {
+                if (isEntityHostileOrNeutral && ((LivingEntity) target).isDeadOrDying()) {
+                    int rng = (int) (Math.random() * 3);
+                    if (rng == 0) {
+                        this.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 120, frenzyLevel - 1, false, false, true));
+                        this.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 120, frenzyLevel - 1, false, false, true));
+                    }
+                }
+            }
+        }
+
+        int guardingStrikeLevel = EnchantmentHelper.getTagEnchantmentLevel(ExtraEnchantsMain.GUARDING_STRIKE.get(), itemStackMainHand);
+        if (target instanceof LivingEntity) {
+            if (guardingStrikeLevel > 0) {
+                if (isEntityHostileOrNeutral && ((LivingEntity) target).isDeadOrDying()) {
+                    this.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 120, guardingStrikeLevel - 1, false, false, true));
+                }
+            }
+        }
+
+        int lifestealLevel = EnchantmentHelper.getTagEnchantmentLevel(ExtraEnchantsMain.LIFESTEAL.get(), itemStackMainHand);
+        if (target instanceof LivingEntity) {
+            if (lifestealLevel > 0) {
+                if (isEntityHostileOrNeutral && ((LivingEntity) target).isDeadOrDying()) {
+                    float percentage = 0.001f;
+                    percentage *= lifestealLevel;
+                    this.level().playSound(null, this.blockPosition(), SoundEvents.SOUL_ESCAPE, SoundSource.MASTER, 3f, 1f);
+                    this.heal((((LivingEntity) target).getMaxHealth() * percentage));
+                }
+            }
         }
     }
 }

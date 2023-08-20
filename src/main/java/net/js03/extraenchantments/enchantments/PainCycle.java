@@ -57,30 +57,30 @@ public class PainCycle extends Enchantment {
         return super.canEnchant(pStack) || pStack.getItem() instanceof AxeItem;
     }
 
-    @Override
-    public void doPostAttack(LivingEntity pAttacker, Entity pTarget, int pLevel) {
-        if (pTarget instanceof Monster || pTarget instanceof Player || pTarget instanceof Hoglin || pTarget instanceof Bee
-                || pTarget instanceof Dolphin || pTarget instanceof Goat || pTarget instanceof IronGolem || pTarget instanceof SnowGolem || pTarget instanceof Llama
-                || pTarget instanceof TraderLlama || pTarget instanceof Panda || pTarget instanceof PolarBear || pTarget instanceof Wolf
-                || pTarget instanceof Pufferfish || pTarget instanceof Slime || pTarget instanceof MagmaCube || pTarget instanceof Phantom
-                || pTarget instanceof EnderDragon) {
-            if (!((LivingEntity) pTarget).getLastDamageSource().is(DamageTypeTags.IS_PROJECTILE)) {
-                if (hits >= 7) {
-                    if (((LivingEntity) pTarget).getLastDamageSource() != null) {
-                        pTarget.hurt(pAttacker.damageSources().magic(), 20);
-                        pAttacker.level().playSound(null, pTarget.blockPosition(), SoundEvents.ARROW_HIT_PLAYER, SoundSource.MASTER, 1f, 1f);
-                        hits = 0;
-                    }
-                } else {
-                    hits++;
-                    if (pAttacker.getHealth() < 1) {
-                        pAttacker.hurt(pAttacker.damageSources().magic(), 100);
-                    } else {
-                        pAttacker.setHealth(pAttacker.getHealth() - 0.5f);
-                    }
-                    pAttacker.level().playSound(null, pAttacker.blockPosition(), SoundEvents.SOUL_ESCAPE, SoundSource.MASTER, 3f, 1f);
-                }
-            }
-        }
-    }
+//    @Override
+//    public void doPostAttack(LivingEntity pAttacker, Entity pTarget, int pLevel) {
+//        if (pTarget instanceof Monster || pTarget instanceof Player || pTarget instanceof Hoglin || pTarget instanceof Bee
+//                || pTarget instanceof Dolphin || pTarget instanceof Goat || pTarget instanceof IronGolem || pTarget instanceof SnowGolem || pTarget instanceof Llama
+//                || pTarget instanceof TraderLlama || pTarget instanceof Panda || pTarget instanceof PolarBear || pTarget instanceof Wolf
+//                || pTarget instanceof Pufferfish || pTarget instanceof Slime || pTarget instanceof MagmaCube || pTarget instanceof Phantom
+//                || pTarget instanceof EnderDragon) {
+//            if (!((LivingEntity) pTarget).getLastDamageSource().is(DamageTypeTags.IS_PROJECTILE)) {
+//                if (hits >= 7) {
+//                    if (((LivingEntity) pTarget).getLastDamageSource() != null) {
+//                        pTarget.hurt(pAttacker.damageSources().magic(), 20);
+//                        pAttacker.level().playSound(null, pTarget.blockPosition(), SoundEvents.ARROW_HIT_PLAYER, SoundSource.MASTER, 1f, 1f);
+//                        hits = 0;
+//                    }
+//                } else {
+//                    hits++;
+//                    if (pAttacker.getHealth() < 1) {
+//                        pAttacker.hurt(pAttacker.damageSources().magic(), 100);
+//                    } else {
+//                        pAttacker.setHealth(pAttacker.getHealth() - 0.5f);
+//                    }
+//                    pAttacker.level().playSound(null, pAttacker.blockPosition(), SoundEvents.SOUL_ESCAPE, SoundSource.MASTER, 3f, 1f);
+//                }
+//            }
+//        }
+//    }
 }

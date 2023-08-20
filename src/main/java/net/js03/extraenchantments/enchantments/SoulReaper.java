@@ -66,22 +66,22 @@ public class SoulReaper extends Enchantment {
         return super.canEnchant(pStack) || pStack.getItem() instanceof AxeItem;
     }
 
-    @Override
-    public void doPostAttack(LivingEntity pAttacker, Entity pTarget, int pLevel) {
-        if (pTarget instanceof Monster || pTarget instanceof Player || pTarget instanceof Hoglin || pTarget instanceof Bee
-                || pTarget instanceof Dolphin || pTarget instanceof Goat || pTarget instanceof IronGolem || pTarget instanceof SnowGolem || pTarget instanceof Llama
-                || pTarget instanceof TraderLlama || pTarget instanceof Panda || pTarget instanceof PolarBear || pTarget instanceof Wolf
-                || pTarget instanceof Pufferfish || pTarget instanceof Slime || pTarget instanceof MagmaCube || pTarget instanceof Phantom
-                || pTarget instanceof EnderDragon) {
-//            float randomNumber = rng.nextFloat(0.03f, 0.06f);
-            float randomNumber = rng.nextFloat(0.5f, 2f);
-//            percentage *= randomNumber;
-            int randomNumber1 = rng.nextInt(6);
-            if (randomNumber1 <= 1) {
-                pAttacker.level().playSound(null, pAttacker.blockPosition(), SoundEvents.SOUL_ESCAPE, SoundSource.MASTER, 3f, 1f);
-                pAttacker.heal(randomNumber /* * percentage */);
-            }
-//            percentage = 1;
-        }
-    }
+//    @Override
+//    public void doPostAttack(LivingEntity pAttacker, Entity pTarget, int pLevel) {
+//        if (pTarget instanceof Monster || pTarget instanceof Player || pTarget instanceof Hoglin || pTarget instanceof Bee
+//                || pTarget instanceof Dolphin || pTarget instanceof Goat || pTarget instanceof IronGolem || pTarget instanceof SnowGolem || pTarget instanceof Llama
+//                || pTarget instanceof TraderLlama || pTarget instanceof Panda || pTarget instanceof PolarBear || pTarget instanceof Wolf
+//                || pTarget instanceof Pufferfish || pTarget instanceof Slime || pTarget instanceof MagmaCube || pTarget instanceof Phantom
+//                || pTarget instanceof EnderDragon) {
+////            float randomNumber = rng.nextFloat(0.03f, 0.06f);
+//            float randomNumber = rng.nextFloat(0.5f, 2f);
+////            percentage *= randomNumber;
+//            int randomNumber1 = rng.nextInt(6);
+//            if (randomNumber1 <= 1) {
+//                pAttacker.level().playSound(null, pAttacker.blockPosition(), SoundEvents.SOUL_ESCAPE, SoundSource.MASTER, 3f, 1f);
+//                pAttacker.heal(randomNumber /* * percentage */);
+//            }
+////            percentage = 1;
+//        }
+//    }
 }

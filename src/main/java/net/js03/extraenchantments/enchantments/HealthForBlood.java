@@ -49,19 +49,19 @@ public class HealthForBlood extends Enchantment {
         return super.canEnchant(pStack) || pStack.getItem() instanceof AxeItem;
     }
 
-    @Override
-    public void doPostAttack(LivingEntity pAttacker, Entity pTarget, int pLevel) {
-        if (pTarget instanceof Monster || pTarget instanceof Player || pTarget instanceof Hoglin || pTarget instanceof Bee
-                || pTarget instanceof Dolphin || pTarget instanceof Goat || pTarget instanceof IronGolem || pTarget instanceof SnowGolem || pTarget instanceof Llama
-                || pTarget instanceof TraderLlama || pTarget instanceof Panda || pTarget instanceof PolarBear || pTarget instanceof Wolf
-                || pTarget instanceof Pufferfish || pTarget instanceof Slime || pTarget instanceof MagmaCube || pTarget instanceof Phantom
-                || pTarget instanceof EnderDragon) {
-            if (!pTarget.isAlive() && !((LivingEntity) pTarget).getLastDamageSource().is(DamageTypeTags.IS_PROJECTILE)) {
-                float percentage = 0.04f;
-                percentage *= pLevel;
-                pAttacker.level().playSound(null, pAttacker.blockPosition(), SoundEvents.SOUL_ESCAPE, SoundSource.MASTER, 3f, 1f);
-                pAttacker.heal((((LivingEntity) pTarget).getMaxHealth() * percentage));
-            }
-        }
-    }
+//    @Override
+//    public void doPostAttack(LivingEntity pAttacker, Entity pTarget, int pLevel) {
+//        if (pTarget instanceof Monster || pTarget instanceof Player || pTarget instanceof Hoglin || pTarget instanceof Bee
+//                || pTarget instanceof Dolphin || pTarget instanceof Goat || pTarget instanceof IronGolem || pTarget instanceof SnowGolem || pTarget instanceof Llama
+//                || pTarget instanceof TraderLlama || pTarget instanceof Panda || pTarget instanceof PolarBear || pTarget instanceof Wolf
+//                || pTarget instanceof Pufferfish || pTarget instanceof Slime || pTarget instanceof MagmaCube || pTarget instanceof Phantom
+//                || pTarget instanceof EnderDragon) {
+//            if (!pTarget.isAlive() && !((LivingEntity) pTarget).getLastDamageSource().is(DamageTypeTags.IS_PROJECTILE)) {
+//                float percentage = 0.04f;
+//                percentage *= pLevel;
+//                pAttacker.level().playSound(null, pAttacker.blockPosition(), SoundEvents.SOUL_ESCAPE, SoundSource.MASTER, 3f, 1f);
+//                pAttacker.heal((((LivingEntity) pTarget).getMaxHealth() * percentage));
+//            }
+//        }
+//    }
 }

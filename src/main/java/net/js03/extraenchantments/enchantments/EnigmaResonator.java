@@ -40,15 +40,15 @@ public class EnigmaResonator extends Enchantment {
         return super.canEnchant(pStack) || pStack.getItem() instanceof AxeItem;
     }
 
-    @Override
-    public void doPostAttack(LivingEntity pAttacker, Entity pTarget, int pLevel) {
-        if (pTarget instanceof LivingEntity && !((LivingEntity) pTarget).getLastDamageSource().is(DamageTypeTags.IS_PROJECTILE)) {
-            int rng = (int) (Math.random() * 35);
-            if (rng <= pLevel) {
-                if (((LivingEntity) pTarget).getLastDamageSource() != null) {
-                    pTarget.hurt(pTarget.damageSources().generic(), (float) (pAttacker.getHealth() * 0.75));
-                }
-            }
-        }
-    }
+//    @Override
+//    public void doPostAttack(LivingEntity pAttacker, Entity pTarget, int pLevel) {
+//        if (pTarget instanceof LivingEntity && !((LivingEntity) pTarget).getLastDamageSource().is(DamageTypeTags.IS_PROJECTILE)) {
+//            int rng = (int) (Math.random() * 35);
+//            if (rng <= pLevel) {
+//                if (((LivingEntity) pTarget).getLastDamageSource() != null) {
+//                    pTarget.hurt(pTarget.damageSources().generic(), (float) (pAttacker.getHealth() * 0.75));
+//                }
+//            }
+//        }
+//    }
 }

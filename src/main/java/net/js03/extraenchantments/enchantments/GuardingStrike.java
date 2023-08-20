@@ -53,16 +53,16 @@ public class GuardingStrike extends Enchantment {
         return super.canEnchant(pStack) || pStack.getItem() instanceof AxeItem;
     }
 
-    @Override
-    public void doPostAttack(LivingEntity pAttacker, Entity pTarget, int pLevel) {
-        if (pTarget instanceof Monster || pTarget instanceof Player || pTarget instanceof Hoglin || pTarget instanceof Bee
-                || pTarget instanceof Dolphin || pTarget instanceof Goat || pTarget instanceof IronGolem || pTarget instanceof SnowGolem || pTarget instanceof Llama
-                || pTarget instanceof TraderLlama || pTarget instanceof Panda || pTarget instanceof PolarBear || pTarget instanceof Wolf
-                || pTarget instanceof Pufferfish || pTarget instanceof Slime || pTarget instanceof MagmaCube || pTarget instanceof Phantom
-                || pTarget instanceof EnderDragon) {
-            if (((LivingEntity) pTarget).isDeadOrDying() && !((LivingEntity) pTarget).getLastDamageSource().is(DamageTypeTags.IS_PROJECTILE)) {
-                pAttacker.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 120, pLevel - 1, false, false, true));
-            }
-        }
-    }
+//    @Override
+//    public void doPostAttack(LivingEntity pAttacker, Entity pTarget, int pLevel) {
+//        if (pTarget instanceof Monster || pTarget instanceof Player || pTarget instanceof Hoglin || pTarget instanceof Bee
+//                || pTarget instanceof Dolphin || pTarget instanceof Goat || pTarget instanceof IronGolem || pTarget instanceof SnowGolem || pTarget instanceof Llama
+//                || pTarget instanceof TraderLlama || pTarget instanceof Panda || pTarget instanceof PolarBear || pTarget instanceof Wolf
+//                || pTarget instanceof Pufferfish || pTarget instanceof Slime || pTarget instanceof MagmaCube || pTarget instanceof Phantom
+//                || pTarget instanceof EnderDragon) {
+//            if (((LivingEntity) pTarget).isDeadOrDying() && !((LivingEntity) pTarget).getLastDamageSource().is(DamageTypeTags.IS_PROJECTILE)) {
+//                pAttacker.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 120, pLevel - 1, false, false, true));
+//            }
+//        }
+//    }
 }

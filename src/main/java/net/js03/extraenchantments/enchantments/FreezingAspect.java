@@ -36,12 +36,12 @@ public class FreezingAspect extends Enchantment {
         return super.checkCompatibility(pOther) && pOther != Enchantments.FIRE_ASPECT;
     }
 
-    @Override
-    public void doPostAttack(LivingEntity pAttacker, Entity pTarget, int pLevel) {
-        if (pTarget instanceof LivingEntity && !(pTarget instanceof Blaze) && !(pTarget instanceof MagmaCube)) {
-            if (!pAttacker.level().dimensionType().ultraWarm() && !((LivingEntity) pTarget).getLastDamageSource().is(DamageTypeTags.IS_PROJECTILE)) {
-                pTarget.setTicksFrozen(pLevel * 360);
-            }
-        }
-    }
+//    @Override
+//    public void doPostAttack(LivingEntity pAttacker, Entity pTarget, int pLevel) {
+//        if (pTarget instanceof LivingEntity && !(pTarget instanceof Blaze) && !(pTarget instanceof MagmaCube)) {
+//            if (!pAttacker.level().dimensionType().ultraWarm() && !((LivingEntity) pTarget).getLastDamageSource().is(DamageTypeTags.IS_PROJECTILE)) {
+//                pTarget.setTicksFrozen(pLevel * 360);
+//            }
+//        }
+//    }
 }

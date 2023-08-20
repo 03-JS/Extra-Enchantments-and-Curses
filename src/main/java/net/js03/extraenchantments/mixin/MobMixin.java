@@ -92,7 +92,7 @@ public abstract class MobMixin extends LivingEntity {
         if (target instanceof LivingEntity) {
             if (soulReaperLevel > 0) {
                 if (isEntityHostileOrNeutral) {
-                    int healingAmount = rng.nextInt(4);
+                    int healingAmount = rng.nextInt(1,5);
                     int healingChance = rng.nextInt(6);
                     if (healingChance <= 1) {
                         this.getWorld().playSound(null, this.getBlockPos(), SoundEvents.PARTICLE_SOUL_ESCAPE, SoundCategory.MASTER, 3f, 1f);

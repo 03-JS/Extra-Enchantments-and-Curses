@@ -45,7 +45,7 @@ public class BurningThorns extends Enchantment {
     @Override
     public void doPostHurt(LivingEntity pTarget, Entity pAttacker, int pLevel) {
         int rng = (int) (1 + Math.random() * 4);
-        if (pAttacker instanceof LivingEntity && rng <= pLevel) {
+        if (pAttacker instanceof LivingEntity && rng <= pLevel && !pAttacker.isOnFire()) {
             pAttacker.setSecondsOnFire(3);
         }
     }

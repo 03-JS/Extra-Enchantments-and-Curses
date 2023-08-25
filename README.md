@@ -2,7 +2,7 @@
 
 A mod that adds new Enchantments & Curses to Minecraft
 
-Available for both **Forge** & **Fabric** | Supports [**Enchantments Descriptions**](https://www.curseforge.com/minecraft/mc-mods/enchantment-descriptions)
+Available for both **Forge** & **Fabric** | Supports [**Enchantment Descriptions**](https://www.curseforge.com/minecraft/mc-mods/enchantment-descriptions)
 <br/>
 
 ---

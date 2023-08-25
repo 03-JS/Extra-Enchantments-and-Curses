@@ -150,7 +150,7 @@ public abstract class PlayerMixin extends LivingEntity {
 
         int freezingAspectLevel = EnchantmentHelper.getTagEnchantmentLevel(ExtraEnchantsMain.FREEZING_ASPECT.get(), itemStackMainHand);
         if (target instanceof LivingEntity) {
-            if (freezingAspectLevel > 0 && !target.isFullyFrozen()) {
+            if (freezingAspectLevel > 0 && !target.isFullyFrozen() && !target.isInLava() && !target.level().dimensionType().ultraWarm()) {
                 target.setTicksFrozen(freezingAspectLevel * 360);
             }
         }

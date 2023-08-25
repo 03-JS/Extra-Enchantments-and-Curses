@@ -43,7 +43,7 @@ public abstract class MobMixin extends LivingEntity {
     private void attack(Entity target, CallbackInfoReturnable<Boolean> cir) {
         int freezingAspectLevel = EnchantmentHelper.getEnchantmentLevel(ExtraEnchantsMain.FREEZING_ASPECT.get(), this);
         if (target instanceof LivingEntity) {
-            if (freezingAspectLevel > 0 && !target.isFullyFrozen()) {
+            if (freezingAspectLevel > 0 && !target.isFullyFrozen() && !target.isInLava() && !target.level().dimensionType().ultraWarm()) {
                 target.setTicksFrozen(freezingAspectLevel * 360);
             }
         }

@@ -46,7 +46,7 @@ public class FreezingThorns extends Enchantment {
     public void doPostHurt(LivingEntity pTarget, Entity pAttacker, int pLevel) {
         int rng = (int) (1 + Math.random() * 4);
         if (pAttacker instanceof LivingEntity && rng <= pLevel && !(pAttacker instanceof Blaze) && !(pAttacker instanceof MagmaCube)) {
-            if (!pTarget.level().dimensionType().ultraWarm() && !pAttacker.isFullyFrozen()) {
+            if (!pTarget.level().dimensionType().ultraWarm() && !pAttacker.isFullyFrozen() && !pTarget.isInLava()) {
                 pAttacker.setTicksFrozen(400);
             }
         }

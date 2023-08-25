@@ -24,7 +24,7 @@ public class MagmaBlockMixin extends Block {
 
     @Overwrite
     public void stepOn(Level pLevel, BlockPos pPos, BlockState pState, Entity pEntity) {
-        if (!pEntity.isSteppingCarefully() && pEntity instanceof LivingEntity && !EnchantmentHelper.hasFrostWalker((LivingEntity)pEntity) && EnchantmentHelper.getEnchantmentLevel(ExtraEnchantsMain.HELLWALKER.get(), (LivingEntity) pEntity) < 0) {
+        if (!pEntity.isSteppingCarefully() && pEntity instanceof LivingEntity && !EnchantmentHelper.hasFrostWalker((LivingEntity)pEntity) && EnchantmentHelper.getEnchantmentLevel(ExtraEnchantsMain.HELLWALKER.get(), (LivingEntity) pEntity) <= 0) {
             pEntity.hurt(pLevel.damageSources().hotFloor(), 1.0F);
         }
 

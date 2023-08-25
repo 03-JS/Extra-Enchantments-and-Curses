@@ -114,7 +114,6 @@ public abstract class PlayerMixin extends LivingEntity {
             Objects.requireNonNull(this.getAttributeInstance(ReachEntityAttributes.REACH)).setBaseValue(0.0);
             Objects.requireNonNull(this.getAttributeInstance(ReachEntityAttributes.ATTACK_RANGE)).setBaseValue(0.0);
         }
-
         if (swiftnessLevel > 0) {
             if (itemStackMainHand.getItem() instanceof AxeItem) {
                 Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_SPEED)).setBaseValue(EntityAttributes.GENERIC_ATTACK_SPEED.getDefaultValue() + swiftnessLevel / 8.4);
@@ -143,7 +142,7 @@ public abstract class PlayerMixin extends LivingEntity {
 
         int freezingAspectLevel = EnchantmentHelper.getLevel(ExtraEnchantsMain.FREEZING_ASPECT, itemStackMainHand);
         if (target instanceof LivingEntity) {
-            if (freezingAspectLevel > 0 && !target.isFrozen()) {
+            if (freezingAspectLevel > 0 && !target.isFrozen() && !target.isInLava() && !target.getWorld().getDimension().ultrawarm()) {
                 target.setFrozenTicks(freezingAspectLevel * 360);
             }
         }

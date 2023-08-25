@@ -6,6 +6,7 @@
   "mixins": [
     "CrossbowMixin",
     "LivingEntityMixin",
+    "MagmaBlockMixin",
     "MobMixin",
     "PlayerMixin"
   ],

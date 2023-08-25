@@ -9,7 +9,8 @@
     "PlayerMixin",
     "LivingEntityMixin",
     "CrossbowMixin",
-    "MobMixin"
+    "MobMixin",
+    "MagmaBlockMixin"
   ],
   "injectors": {
     "defaultRequire": 1

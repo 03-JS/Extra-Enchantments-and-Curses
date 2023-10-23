@@ -6,6 +6,7 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ShearsItem;
 import net.minecraft.item.SwordItem;
+import net.minecraft.item.TridentItem;
 
 public class Reach extends Enchantment {
     public Reach(Rarity weight, EquipmentSlot[] slotTypes) {
@@ -30,6 +31,6 @@ public class Reach extends Enchantment {
     }
 
     public boolean isAcceptableItem(ItemStack stack) {
-        return stack.getItem() instanceof SwordItem || stack.getItem() instanceof ShearsItem || super.isAcceptableItem(stack);
+        return stack.getItem() instanceof SwordItem || stack.getItem() instanceof ShearsItem || stack.getItem() instanceof TridentItem || super.isAcceptableItem(stack);
     }
 }

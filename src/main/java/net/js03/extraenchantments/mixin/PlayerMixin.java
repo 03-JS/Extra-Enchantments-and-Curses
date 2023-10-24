@@ -46,6 +46,10 @@ public abstract class PlayerMixin extends LivingEntity {
 
     private int painCycleHits = 0;
     private Random rng = new Random();
+    private static double previousMaxHealth;
+    private boolean isOvershieldActive = true;
+    private boolean isOvBonusActive = false;
+    private int lastOvLevel;
 
     public PlayerMixin(EntityType<? extends LivingEntity> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -101,9 +105,31 @@ public abstract class PlayerMixin extends LivingEntity {
             this.removeEffect(MobEffects.DARKNESS);
         }
         if (overshieldLevel > 0) {
-            Objects.requireNonNull(this.getAttribute(Attributes.MAX_HEALTH)).setBaseValue(Attributes.MAX_HEALTH.getDefaultValue() + overshieldLevel * 2);
+            if (!isOvershieldActive) {
+                previousMaxHealth = Objects.requireNonNull(this.getAttribute(Attributes.MAX_HEALTH)).getValue();
+                isOvershieldActive = true;
+                Objects.requireNonNull(this.getAttribute(Attributes.MAX_HEALTH)).setBaseValue(previousMaxHealth + overshieldLevel * 2);
+                System.out.println("Previous max health (1) : " + previousMaxHealth);
+            }
+            isOvBonusActive = true;
+            lastOvLevel = overshieldLevel;
         } else {
-            Objects.requireNonNull(this.getAttribute(Attributes.MAX_HEALTH)).setBaseValue(Attributes.MAX_HEALTH.getDefaultValue());
+            if (isOvershieldActive) {
+                isOvershieldActive = false;
+                if (previousMaxHealth != 0 && isOvBonusActive) {
+                    System.out.println("Previous max health (2) : " + previousMaxHealth);
+                    System.out.println("Restore health");
+                    isOvBonusActive = false;
+                    Objects.requireNonNull(this.getAttribute(Attributes.MAX_HEALTH)).setBaseValue(previousMaxHealth);
+                } else {
+                    if (isOvBonusActive) {
+                        previousMaxHealth = Objects.requireNonNull(this.getAttribute(Attributes.MAX_HEALTH)).getValue() - (lastOvLevel * 2);
+                        Objects.requireNonNull(this.getAttribute(Attributes.MAX_HEALTH)).setBaseValue(previousMaxHealth);
+                        System.out.println("Previous max health (3) : " + previousMaxHealth);
+                        isOvBonusActive = false;
+                    }
+                }
+            }
         }
 
         // Sword & Tools behaviour

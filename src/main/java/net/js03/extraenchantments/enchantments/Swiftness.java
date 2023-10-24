@@ -24,6 +24,6 @@ public class Swiftness extends Enchantment {
 
     @Override
     public boolean canEnchant(ItemStack pStack) {
-        return pStack.getItem() instanceof PickaxeItem || pStack.getItem() instanceof AxeItem || pStack.getItem() instanceof ShovelItem || pStack.getItem() instanceof HoeItem || super.canEnchant(pStack);
+        return pStack.getItem() instanceof PickaxeItem || pStack.getItem() instanceof AxeItem || pStack.getItem() instanceof ShovelItem || pStack.getItem() instanceof HoeItem || pStack.getItem() instanceof TridentItem || super.canEnchant(pStack);
     }
 }

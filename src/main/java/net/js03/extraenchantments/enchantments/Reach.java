@@ -2,9 +2,7 @@ package net.js03.extraenchantments.enchantments;
 
 
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ShearsItem;
-import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 
@@ -32,6 +30,6 @@ public class Reach extends Enchantment {
 
     @Override
     public boolean canEnchant(ItemStack pStack) {
-        return pStack.getItem() instanceof SwordItem || pStack.getItem() instanceof ShearsItem || super.canEnchant(pStack);
+        return pStack.getItem() instanceof SwordItem || pStack.getItem() instanceof ShearsItem  || pStack.getItem() instanceof TridentItem || super.canEnchant(pStack);
     }
 }

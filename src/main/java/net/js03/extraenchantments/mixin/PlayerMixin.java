@@ -16,10 +16,8 @@ import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.ItemStack;
-import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.stat.Stat;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -39,9 +37,15 @@ public abstract class PlayerMixin extends LivingEntity {
     private int painCycleHits = 0;
     private Random rng = new Random();
 
+    private static double previousMaxHealth;
+    private boolean isOvershieldActive = true;
+    private boolean isOvBonusActive = false;
+    private int lastOvLevel;
+
     protected PlayerMixin(EntityType<? extends LivingEntity> entityType, World world) {
         super(entityType, world);
     }
+
 
     @Inject(method = "tick", at = @At("HEAD"))
     private void tick(CallbackInfo ci) {
@@ -93,9 +97,31 @@ public abstract class PlayerMixin extends LivingEntity {
             this.removeStatusEffect(StatusEffects.DARKNESS);
         }
         if (overshieldLevel > 0) {
-            Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(EntityAttributes.GENERIC_MAX_HEALTH.getDefaultValue() + overshieldLevel * 2);
+            if (!isOvershieldActive) {
+                previousMaxHealth = Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).getValue();
+                isOvershieldActive = true;
+                Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(previousMaxHealth + overshieldLevel * 2);
+                System.out.println("Previous max health (1) : " + previousMaxHealth);
+            }
+            isOvBonusActive = true;
+            lastOvLevel = overshieldLevel;
         } else {
-            Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(EntityAttributes.GENERIC_MAX_HEALTH.getDefaultValue());
+            if (isOvershieldActive) {
+                isOvershieldActive = false;
+                if (previousMaxHealth != 0 && isOvBonusActive) {
+                    System.out.println("Previous max health (2) : " + previousMaxHealth);
+                    System.out.println("Restore health");
+                    isOvBonusActive = false;
+                    Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(previousMaxHealth);
+                } else {
+                    if (isOvBonusActive) {
+                        previousMaxHealth = Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).getValue() - (lastOvLevel * 2);
+                        Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(previousMaxHealth);
+                        System.out.println("Previous max health (3) : " + previousMaxHealth);
+                        isOvBonusActive = false;
+                    }
+                }
+            }
         }
 
         // Sword & Tools behaviour
@@ -193,7 +219,7 @@ public abstract class PlayerMixin extends LivingEntity {
         if (target instanceof LivingEntity) {
             if (soulReaperLevel > 0) {
                 if (isEntityHostileOrNeutral) {
-                    int healingAmount = rng.nextInt(1,5);
+                    int healingAmount = rng.nextInt(1, 5);
                     int healingChance = rng.nextInt(6);
                     if (healingChance <= 1) {
                         this.getWorld().playSound(null, this.getBlockPos(), SoundEvents.PARTICLE_SOUL_ESCAPE, SoundCategory.MASTER, 3f, 1f);

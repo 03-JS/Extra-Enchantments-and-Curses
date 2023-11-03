@@ -38,7 +38,7 @@ public class CurseOfAttrition extends Enchantment {
 
     @Override
     public boolean canEnchant(ItemStack pStack) {
-        return super.canEnchant(pStack) || pStack.getItem() instanceof PickaxeItem || pStack.getItem() instanceof AxeItem || pStack.getItem() instanceof ShovelItem || pStack.getItem() instanceof HoeItem;
+        return super.canEnchant(pStack) || pStack.getItem() instanceof PickaxeItem || pStack.getItem() instanceof AxeItem || pStack.getItem() instanceof ShovelItem || pStack.getItem() instanceof HoeItem || pStack.getItem() instanceof TridentItem;
     }
 
     @Override

@@ -45,6 +45,7 @@ public class ExtraEnchantsMain
     public static final RegistryObject<Enchantment> ENIGMA_RESONATOR = ENCHANTMENTS.register("enigma_resonator", () -> new EnigmaResonator(Enchantment.Rarity.RARE, new EquipmentSlot[]{EquipmentSlot.MAINHAND}));
     public static final RegistryObject<Enchantment> REACH = ENCHANTMENTS.register("reach", () -> new Reach(Enchantment.Rarity.RARE, new EquipmentSlot[]{EquipmentSlot.MAINHAND}));
     public static final RegistryObject<Enchantment> SWIFTNESS = ENCHANTMENTS.register("swiftness", () -> new Swiftness(Enchantment.Rarity.RARE, new EquipmentSlot[]{EquipmentSlot.MAINHAND}));
+    public static final RegistryObject<Enchantment> EXPERIENCE_CATALYST = ENCHANTMENTS.register("experience_catalyst", () -> new ExperienceCatalyst(Enchantment.Rarity.RARE, new EquipmentSlot[]{EquipmentSlot.MAINHAND}));
     public static final RegistryObject<Enchantment> BURNING_THORNS = ENCHANTMENTS.register("burning_thorns", () -> new BurningThorns(Enchantment.Rarity.VERY_RARE, new EquipmentSlot[]{EquipmentSlot.CHEST}));
     public static final RegistryObject<Enchantment> FREEZING_THORNS = ENCHANTMENTS.register("freezing_thorns", () -> new FreezingThorns(Enchantment.Rarity.VERY_RARE, new EquipmentSlot[]{EquipmentSlot.CHEST}));
     public static final RegistryObject<Enchantment> OVERSHIELD = ENCHANTMENTS.register("overshield", () -> new Overshield(Enchantment.Rarity.VERY_RARE, new EquipmentSlot[]{EquipmentSlot.CHEST}));

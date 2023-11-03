@@ -64,5 +64,7 @@
   "enchantment.extra_enchantments.overshield": "Overshield",
   "enchantment.extra_enchantments.overshield.desc": "Increases the wearer's health",
   "enchantment.extra_enchantments.soul_reaper": "Soul Reaper",
-  "enchantment.extra_enchantments.soul_reaper.desc": "Reduces the item's damage in exchange for a chance to heal the user with every hit on a neutral or hostile mob"
+  "enchantment.extra_enchantments.soul_reaper.desc": "Reduces the item's damage in exchange for a chance to heal the user with every hit on a neutral or hostile mob",
+  "enchantment.extra_enchantments.experience_catalyst": "Experience Catalyst",
+  "enchantment.extra_enchantments.experience_catalyst.desc": "Increases the amount of experience you get when the item is in your main hand"
 }

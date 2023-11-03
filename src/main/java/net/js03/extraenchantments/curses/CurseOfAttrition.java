@@ -37,7 +37,7 @@ public class CurseOfAttrition extends Enchantment {
     }
 
     public boolean isAcceptableItem(ItemStack stack) {
-        return stack.getItem() instanceof PickaxeItem || stack.getItem() instanceof AxeItem || stack.getItem() instanceof ShovelItem || stack.getItem() instanceof HoeItem || super.isAcceptableItem(stack);
+        return stack.getItem() instanceof PickaxeItem || stack.getItem() instanceof AxeItem || stack.getItem() instanceof ShovelItem || stack.getItem() instanceof HoeItem || stack.getItem() instanceof TridentItem || super.isAcceptableItem(stack);
     }
 
     @Override

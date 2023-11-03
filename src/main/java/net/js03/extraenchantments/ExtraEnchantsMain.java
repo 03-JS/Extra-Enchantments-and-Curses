@@ -50,6 +50,8 @@ public class ExtraEnchantsMain implements ModInitializer {
     public static final Enchantment SWIFTNESS = new Swiftness(Enchantment.Rarity.RARE, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     public static final Enchantment CURSE_OF_ATTRITION = new CurseOfAttrition(Enchantment.Rarity.VERY_RARE, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     public static final Enchantment OVERSHIELD = new Overshield(Enchantment.Rarity.VERY_RARE, new EquipmentSlot[]{EquipmentSlot.CHEST});
+    public static final Enchantment EXPERIENCE_CATALYST = new ExperienceCatalyst(Enchantment.Rarity.RARE, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+
 
     @Override
     public void onInitialize() {
@@ -67,6 +69,7 @@ public class ExtraEnchantsMain implements ModInitializer {
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "enigma_resonator"), ENIGMA_RESONATOR);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "reach"), REACH);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "swiftness"), SWIFTNESS);
+        Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "experience_catalyst"), EXPERIENCE_CATALYST);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "burning_thorns"), BURNING_THORNS);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "freezing_thorns"), FREEZING_THORNS);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "overshield"), OVERSHIELD);

@@ -30,6 +30,6 @@ public class ExperienceCatalyst extends Enchantment{
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        return super.canAccept(other) || other != Enchantments.LOOTING || other != Enchantments.FORTUNE;
+        return super.canAccept(other) || other != Enchantments.LOOTING;
     }
 }

@@ -18,6 +18,7 @@ repositories {
                 includeGroup "com.jamieswhiteshirt"
             }
         }
+        maven { url 'https://maven.wispforest.io' }
     }
 }
 
@@ -27,9 +28,12 @@ dependencies {
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-    // Fabric API. This is technically optional, but you probably want it anyway.
+    // Other dependencies
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
     include modImplementation("com.jamieswhiteshirt:reach-entity-attributes:${project.reach_entity_version}")
+
+    modImplementation "io.wispforest:owo-lib:${project.owo_version}"
+    include "io.wispforest:owo-sentinel:${project.owo_version}"
 
     // modImplementation 'software.bernie.geckolib:geckolib-fabric-1.20'
 

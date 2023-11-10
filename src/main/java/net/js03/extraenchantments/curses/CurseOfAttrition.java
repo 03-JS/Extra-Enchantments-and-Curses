@@ -1,5 +1,7 @@
 package net.js03.extraenchantments.curses;
 
+import net.js03.extraenchantments.ExtraEnchantsMain;
+import net.js03.extraenchantments.config.ConfigUtils;
 import net.js03.extraenchantments.enchantments.Swiftness;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
@@ -8,7 +10,7 @@ import net.minecraft.item.*;
 
 public class CurseOfAttrition extends Enchantment {
     public CurseOfAttrition(Rarity weight, EquipmentSlot[] slotTypes) {
-        super(weight, EnchantmentTarget.WEAPON, slotTypes);
+        super(weight, ExtraEnchantsMain.CONFIG.curseOfAttrition.target(), slotTypes);
     }
 
     @Override
@@ -23,7 +25,7 @@ public class CurseOfAttrition extends Enchantment {
 
     @Override
     public boolean isTreasure() {
-        return true;
+        return ExtraEnchantsMain.CONFIG.curseOfAttrition.isTreasure();
     }
 
     @Override
@@ -33,11 +35,11 @@ public class CurseOfAttrition extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return 1;
+        return ExtraEnchantsMain.CONFIG.curseOfAttrition.maxLevel();
     }
 
     public boolean isAcceptableItem(ItemStack stack) {
-        return stack.getItem() instanceof PickaxeItem || stack.getItem() instanceof AxeItem || stack.getItem() instanceof ShovelItem || stack.getItem() instanceof HoeItem || stack.getItem() instanceof TridentItem || super.isAcceptableItem(stack);
+        return ConfigUtils.checkAcceptableItems("Attrition Curse", stack, target);
     }
 
     @Override

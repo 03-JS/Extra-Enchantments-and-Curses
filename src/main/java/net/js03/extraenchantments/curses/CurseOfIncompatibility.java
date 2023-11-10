@@ -1,5 +1,7 @@
 package net.js03.extraenchantments.curses;
 
+import net.js03.extraenchantments.ExtraEnchantsMain;
+import net.js03.extraenchantments.config.ConfigUtils;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentTarget;
@@ -9,10 +11,11 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.item.ItemStack;
 
 public class CurseOfIncompatibility extends Enchantment {
     public CurseOfIncompatibility(Rarity weight, EquipmentSlot[] slotTypes) {
-        super(weight, EnchantmentTarget.BREAKABLE, slotTypes);
+        super(weight, ExtraEnchantsMain.CONFIG.curseOfIncompatibility.target(), slotTypes);
     }
 
     @Override
@@ -29,7 +32,7 @@ public class CurseOfIncompatibility extends Enchantment {
     }
 
     public int getMaxLevel() {
-        return 1;
+        return ExtraEnchantsMain.CONFIG.curseOfIncompatibility.maxLevel();
     }
 
     @Override
@@ -38,6 +41,21 @@ public class CurseOfIncompatibility extends Enchantment {
     }
 
     public boolean isTreasure() {
-        return true;
+        return ExtraEnchantsMain.CONFIG.curseOfIncompatibility.isTreasure();
+    }
+
+    @Override
+    public boolean isAcceptableItem(ItemStack stack) {
+        return ConfigUtils.checkAcceptableItems("Incompat Curse", stack, target);
+    }
+
+    @Override
+    public boolean isAvailableForEnchantedBookOffer() {
+        return ExtraEnchantsMain.CONFIG.curseOfIncompatibility.isAvailableForEnchantedBookOffer();
+    }
+
+    @Override
+    public boolean isAvailableForRandomSelection() {
+        return ExtraEnchantsMain.CONFIG.curseOfIncompatibility.isAvailableForRandomSelection();
     }
 }

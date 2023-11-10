@@ -1,14 +1,17 @@
 package net.js03.extraenchantments.curses;
 
+import net.js03.extraenchantments.ExtraEnchantsMain;
+import net.js03.extraenchantments.config.ConfigUtils;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.*;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.item.ItemStack;
 
 public class CurseOfWithering extends Enchantment {
     public CurseOfWithering(Rarity weight, EquipmentSlot[] slotTypes) {
-        super(weight, EnchantmentTarget.WEARABLE, slotTypes);
+        super(weight, ExtraEnchantsMain.CONFIG.curseOfWithering.target(), slotTypes);
     }
 
     @Override
@@ -25,11 +28,26 @@ public class CurseOfWithering extends Enchantment {
     }
 
     public int getMaxLevel() {
-        return 1;
+        return ExtraEnchantsMain.CONFIG.curseOfWithering.maxLevel();
     }
 
     public boolean isTreasure() {
-        return true;
+        return ExtraEnchantsMain.CONFIG.curseOfWithering.isTreasure();
+    }
+
+    @Override
+    public boolean isAcceptableItem(ItemStack stack) {
+        return ConfigUtils.checkAcceptableItems("Withering Curse", stack, target);
+    }
+
+    @Override
+    public boolean isAvailableForEnchantedBookOffer() {
+        return ExtraEnchantsMain.CONFIG.curseOfWithering.isAvailableForEnchantedBookOffer();
+    }
+
+    @Override
+    public boolean isAvailableForRandomSelection() {
+        return ExtraEnchantsMain.CONFIG.curseOfWithering.isAvailableForRandomSelection();
     }
 
     @Override

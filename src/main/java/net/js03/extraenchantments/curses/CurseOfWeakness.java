@@ -1,18 +1,21 @@
 package net.js03.extraenchantments.curses;
 
+import net.js03.extraenchantments.ExtraEnchantsMain;
+import net.js03.extraenchantments.config.ConfigUtils;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.item.ItemStack;
 
 public class CurseOfWeakness extends Enchantment {
 
     // private float previousHealth;
 
     public CurseOfWeakness(Rarity weight, EquipmentSlot[] slotTypes) {
-        super(weight, EnchantmentTarget.WEARABLE, slotTypes);
+        super(weight, ExtraEnchantsMain.CONFIG.curseOfWeakness.target(), slotTypes);
         // previousHealth = 0;
     }
 
@@ -30,11 +33,26 @@ public class CurseOfWeakness extends Enchantment {
     }
 
     public int getMaxLevel() {
-        return 1;
+        return ExtraEnchantsMain.CONFIG.curseOfWeakness.maxLevel();
     }
 
     public boolean isTreasure() {
-        return true;
+        return ExtraEnchantsMain.CONFIG.curseOfWeakness.isTreasure();
+    }
+
+    @Override
+    public boolean isAcceptableItem(ItemStack stack) {
+        return ConfigUtils.checkAcceptableItems("Weakness Curse", stack, target);
+    }
+
+    @Override
+    public boolean isAvailableForEnchantedBookOffer() {
+        return ExtraEnchantsMain.CONFIG.curseOfWeakness.isAvailableForEnchantedBookOffer();
+    }
+
+    @Override
+    public boolean isAvailableForRandomSelection() {
+        return ExtraEnchantsMain.CONFIG.curseOfWeakness.isAvailableForRandomSelection();
     }
 
     /*@Override

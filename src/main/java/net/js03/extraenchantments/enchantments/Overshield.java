@@ -1,19 +1,21 @@
 package net.js03.extraenchantments.enchantments;
 
+import net.js03.extraenchantments.ExtraEnchantsMain;
+import net.js03.extraenchantments.config.ConfigUtils;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 
-;
+;import java.util.ArrayList;
+import java.util.List;
 
 public class Overshield extends Enchantment {
     public Overshield(Rarity weight, EquipmentSlot[] slotTypes) {
-        super(weight, EnchantmentTarget.ARMOR_CHEST, slotTypes);
+        super(weight, ExtraEnchantsMain.CONFIG.overshield.target(), slotTypes);
     }
 
     @Override
@@ -28,7 +30,7 @@ public class Overshield extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return 5;
+        return ExtraEnchantsMain.CONFIG.overshield.maxLevel();
     }
 
     @Override
@@ -38,16 +40,21 @@ public class Overshield extends Enchantment {
 
     @Override
     public boolean isTreasure() {
-        return true;
+        return ExtraEnchantsMain.CONFIG.overshield.isTreasure();
     }
 
     @Override
     public boolean isAvailableForEnchantedBookOffer() {
-        return false;
+        return ExtraEnchantsMain.CONFIG.overshield.isAvailableForEnchantedBookOffer();
     }
 
     @Override
     public boolean isAvailableForRandomSelection() {
-        return false;
+        return ExtraEnchantsMain.CONFIG.overshield.isAvailableForRandomSelection();
+    }
+
+    @Override
+    public boolean isAcceptableItem(ItemStack stack) {
+        return ConfigUtils.checkAcceptableItems("Overshield", stack, target);
     }
 }

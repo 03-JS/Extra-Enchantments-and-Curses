@@ -66,7 +66,10 @@ public abstract class PlayerMixin extends LivingEntity {
         int weaknessLevelH = EnchantmentHelper.getLevel(ExtraEnchantsMain.CURSE_OF_WEAKNESS, itemStackHead);
         int undeadLevel = EnchantmentHelper.getLevel(ExtraEnchantsMain.CURSE_OF_UNDEAD, itemStackHead);
         int spectralLevel = EnchantmentHelper.getLevel(ExtraEnchantsMain.SPECTRAL_VISION, itemStackHead);
-        int overshieldLevel = EnchantmentHelper.getLevel(ExtraEnchantsMain.OVERSHIELD, itemStackChest);
+        int overshieldLevelH = EnchantmentHelper.getLevel(ExtraEnchantsMain.OVERSHIELD, itemStackHead);
+        int overshieldLevelC = EnchantmentHelper.getLevel(ExtraEnchantsMain.OVERSHIELD, itemStackChest);
+        int overshieldLevelL = EnchantmentHelper.getLevel(ExtraEnchantsMain.OVERSHIELD, itemStackLegs);
+        int overshieldLevelF = EnchantmentHelper.getLevel(ExtraEnchantsMain.OVERSHIELD, itemStackFeet);
 
         // Sword & Tools level
         int reachLevel = EnchantmentHelper.getLevel(ExtraEnchantsMain.REACH, itemStackMainHand);
@@ -97,15 +100,34 @@ public abstract class PlayerMixin extends LivingEntity {
         if (spectralLevel > 0) {
             this.removeStatusEffect(StatusEffects.DARKNESS);
         }
-        if (overshieldLevel > 0) {
+        if (overshieldLevelH > 0 || overshieldLevelC > 0 || overshieldLevelL > 0 || overshieldLevelF > 0) {
             if (!isOvershieldActive) {
                 previousMaxHealth = Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).getValue();
                 isOvershieldActive = true;
-                Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(previousMaxHealth + overshieldLevel * 2);
+                if (overshieldLevelH > 0) {
+                    Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(previousMaxHealth + overshieldLevelH * 2);
+                }
+                if (overshieldLevelC > 0) {
+                    Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(previousMaxHealth + overshieldLevelC * 2);
+                }
+                if (overshieldLevelL > 0) {
+                    Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(previousMaxHealth + overshieldLevelL * 2);
+                }
+                if (overshieldLevelF > 0) {
+                    Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(previousMaxHealth + overshieldLevelF * 2);
+                }
                 System.out.println("Previous max health (1) : " + previousMaxHealth);
             }
             isOvBonusActive = true;
-            lastOvLevel = overshieldLevel;
+            if (overshieldLevelH > 0) {
+                lastOvLevel = overshieldLevelH;
+            } else if (overshieldLevelC > 0) {
+                lastOvLevel = overshieldLevelC;
+            } else if (overshieldLevelL > 0) {
+                lastOvLevel = overshieldLevelL;
+            } else if (overshieldLevelF > 0) {
+                lastOvLevel = overshieldLevelF;
+            }
         } else {
             if (isOvershieldActive) {
                 isOvershieldActive = false;

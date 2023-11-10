@@ -1,6 +1,7 @@
 package net.js03.extraenchantments;
 
 import net.fabricmc.api.ModInitializer;
+import net.js03.extraenchantments.config.ExtraEnchantsConfig;
 import net.js03.extraenchantments.curses.*;
 import net.js03.extraenchantments.enchantments.*;
 import net.minecraft.enchantment.Enchantment;
@@ -17,12 +18,14 @@ public class ExtraEnchantsMain implements ModInitializer {
     // It is considered best practice to use your mod id as the logger's name.
     // That way, it's clear which mod wrote info, warnings, and errors.
     public static final Logger LOGGER = LoggerFactory.getLogger("extra_enchants");
+    public static final ExtraEnchantsConfig CONFIG = ExtraEnchantsConfig.createAndLoad();
+
     public static final Enchantment HEALTH_FOR_BLOOD = new HealthForBlood(Enchantment.Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     public static final Enchantment ILLAGERS_BANE = new IllagersBane(Enchantment.Rarity.UNCOMMON, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     public static final Enchantment FISHERMANS_BLADE = new FishermansBlade(Enchantment.Rarity.UNCOMMON, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     public static final Enchantment FREEZING_ASPECT = new FreezingAspect(Enchantment.Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     public static final Enchantment LEVITATIONAL_SHOT = new LevitationalShot(Enchantment.Rarity.VERY_RARE, EnchantmentTarget.CROSSBOW, new EquipmentSlot[]{EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND});
-    public static final Enchantment BURNING_THORNS = new BurningThorns(Enchantment.Rarity.VERY_RARE, new EquipmentSlot[]{EquipmentSlot.CHEST});
+    public static final Enchantment BURNING_THORNS = new BurningThorns(CONFIG.burningThorns.weight(), new EquipmentSlot[]{EquipmentSlot.CHEST});
     public static final Enchantment FREEZING_THORNS = new FreezingThorns(Enchantment.Rarity.VERY_RARE, new EquipmentSlot[]{EquipmentSlot.CHEST});
     public static final Enchantment HELLWALKER = new HellWalker(Enchantment.Rarity.RARE, new EquipmentSlot[]{EquipmentSlot.FEET});
     public static final Enchantment SPECTRAL_VISION = new SpectralVision(Enchantment.Rarity.VERY_RARE, new EquipmentSlot[]{EquipmentSlot.HEAD});
@@ -49,7 +52,7 @@ public class ExtraEnchantsMain implements ModInitializer {
     public static final Enchantment REACH = new Reach(Enchantment.Rarity.RARE, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     public static final Enchantment SWIFTNESS = new Swiftness(Enchantment.Rarity.RARE, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     public static final Enchantment CURSE_OF_ATTRITION = new CurseOfAttrition(Enchantment.Rarity.VERY_RARE, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
-    public static final Enchantment OVERSHIELD = new Overshield(Enchantment.Rarity.VERY_RARE, new EquipmentSlot[]{EquipmentSlot.CHEST});
+    public static final Enchantment OVERSHIELD = new Overshield(CONFIG.overshield.weight(), new EquipmentSlot[]{EquipmentSlot.CHEST});
     public static final Enchantment EXPERIENCE_CATALYST = new ExperienceCatalyst(Enchantment.Rarity.RARE, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
 
 

@@ -10,7 +10,8 @@
   ],
   "contact": {
     "homepage": "https://modrinth.com/mod/extra-enchantments-and-curses",
-    "sources": "https://github.com/03-JS/Extra-Enchantments-and-Curses"
+    "sources": "https://github.com/03-JS/Extra-Enchantments-and-Curses",
+    "issues": "https://github.com/03-JS/Extra-Enchantments-and-Curses/issues"
   },
 
   "license": "MIT",

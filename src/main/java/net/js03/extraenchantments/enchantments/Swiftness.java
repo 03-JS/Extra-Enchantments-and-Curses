@@ -21,7 +21,7 @@ public class Swiftness extends Enchantment {
     }
 
     public int getMaxLevel() {
-        return ExtraEnchantsMain.CONFIG.swiftness.;
+        return ExtraEnchantsMain.CONFIG.swiftness.maxLevel();
     }
 
     public boolean isAcceptableItem(ItemStack stack) {

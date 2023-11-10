@@ -1,16 +1,19 @@
 package net.js03.extraenchantments.enchantments;
 
+import net.js03.extraenchantments.ExtraEnchantsMain;
+import net.js03.extraenchantments.config.ConfigUtils;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.registry.tag.DamageTypeTags;
 
 public class ResonatingShot extends Enchantment {
     public ResonatingShot(Rarity weight, EquipmentSlot[] slotTypes) {
-        super(weight, EnchantmentTarget.BOW, slotTypes);
+        super(weight, ExtraEnchantsMain.CONFIG.resonatingShot.target(), slotTypes);
     }
 
     @Override
@@ -25,7 +28,27 @@ public class ResonatingShot extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return 3;
+        return ExtraEnchantsMain.CONFIG.resonatingShot.maxLevel();
+    }
+
+    @Override
+    public boolean isAcceptableItem(ItemStack stack) {
+        return ConfigUtils.checkAcceptableItems("Resonating Shot", stack, target);
+    }
+
+    @Override
+    public boolean isTreasure() {
+        return ExtraEnchantsMain.CONFIG.resonatingShot.isTreasure();
+    }
+
+    @Override
+    public boolean isAvailableForEnchantedBookOffer() {
+        return ExtraEnchantsMain.CONFIG.resonatingShot.isAvailableForEnchantedBookOffer();
+    }
+
+    @Override
+    public boolean isAvailableForRandomSelection() {
+        return ExtraEnchantsMain.CONFIG.resonatingShot.isAvailableForRandomSelection();
     }
 
     @Override

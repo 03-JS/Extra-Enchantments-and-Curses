@@ -1,5 +1,7 @@
 package net.js03.extraenchantments.enchantments;
 
+import net.js03.extraenchantments.ExtraEnchantsMain;
+import net.js03.extraenchantments.config.ConfigUtils;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.enchantment.Enchantments;
@@ -8,13 +10,14 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.item.ItemStack;
 import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 
 public class ShadowShot extends Enchantment {
     public ShadowShot(Rarity weight, EquipmentSlot[] slotTypes) {
-        super(weight, EnchantmentTarget.BOW, slotTypes);
+        super(weight, ExtraEnchantsMain.CONFIG.shadowShot.target(), slotTypes);
     }
 
     @Override
@@ -29,7 +32,7 @@ public class ShadowShot extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return 1;
+        return ExtraEnchantsMain.CONFIG.shadowShot.maxLevel();
     }
 
     @Override
@@ -37,10 +40,25 @@ public class ShadowShot extends Enchantment {
         return !(other instanceof ElectrifyingShot) && !(other instanceof ResonatingShot) && other != Enchantments.QUICK_CHARGE && other != Enchantments.PIERCING && other != Enchantments.MULTISHOT && !(other instanceof HotShot) && !(other instanceof LevitationalShot) && !(other instanceof Supercharge);
     }
 
-    /*@Override
+    @Override
     public boolean isTreasure() {
-        return true;
-    }*/
+        return ExtraEnchantsMain.CONFIG.shadowShot.isTreasure();
+    }
+
+    @Override
+    public boolean isAcceptableItem(ItemStack stack) {
+        return ConfigUtils.checkAcceptableItems("Shadow Shot", stack, target);
+    }
+
+    @Override
+    public boolean isAvailableForEnchantedBookOffer() {
+        return ExtraEnchantsMain.CONFIG.shadowShot.isAvailableForEnchantedBookOffer();
+    }
+
+    @Override
+    public boolean isAvailableForRandomSelection() {
+        return ExtraEnchantsMain.CONFIG.shadowShot.isAvailableForRandomSelection();
+    }
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {

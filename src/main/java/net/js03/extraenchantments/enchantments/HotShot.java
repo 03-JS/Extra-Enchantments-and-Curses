@@ -1,17 +1,20 @@
 package net.js03.extraenchantments.enchantments;
 
+import net.js03.extraenchantments.ExtraEnchantsMain;
+import net.js03.extraenchantments.config.ConfigUtils;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.CreeperEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.registry.tag.DamageTypeTags;
 
 public class HotShot extends Enchantment {
 
     public HotShot(Rarity weight, EquipmentSlot[] slotTypes) {
-        super(weight, EnchantmentTarget.CROSSBOW, slotTypes);
+        super(weight, ExtraEnchantsMain.CONFIG.incandescent.target(), slotTypes);
     }
 
     @Override
@@ -26,7 +29,27 @@ public class HotShot extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return 1;
+        return ExtraEnchantsMain.CONFIG.incandescent.maxLevel();
+    }
+
+    @Override
+    public boolean isAcceptableItem(ItemStack stack) {
+        return ConfigUtils.checkAcceptableItems("Incandescent", stack, target);
+    }
+
+    @Override
+    public boolean isTreasure() {
+        return ExtraEnchantsMain.CONFIG.incandescent.isTreasure();
+    }
+
+    @Override
+    public boolean isAvailableForEnchantedBookOffer() {
+        return ExtraEnchantsMain.CONFIG.incandescent.isAvailableForEnchantedBookOffer();
+    }
+
+    @Override
+    public boolean isAvailableForRandomSelection() {
+        return ExtraEnchantsMain.CONFIG.incandescent.isAvailableForRandomSelection();
     }
 
     /*

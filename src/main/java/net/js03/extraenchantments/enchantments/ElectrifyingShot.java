@@ -1,14 +1,17 @@
 package net.js03.extraenchantments.enchantments;
 
+import net.js03.extraenchantments.ExtraEnchantsMain;
+import net.js03.extraenchantments.config.ConfigUtils;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.*;
+import net.minecraft.item.ItemStack;
 import net.minecraft.registry.tag.DamageTypeTags;
 
 public class ElectrifyingShot extends Enchantment {
     public ElectrifyingShot(Rarity weight, EquipmentSlot[] slotTypes) {
-        super(weight, EnchantmentTarget.BOW, slotTypes);
+        super(weight, ExtraEnchantsMain.CONFIG.electrifyingShot.target(), slotTypes);
     }
 
     @Override
@@ -23,7 +26,27 @@ public class ElectrifyingShot extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return 1;
+        return ExtraEnchantsMain.CONFIG.electrifyingShot.maxLevel();
+    }
+
+    @Override
+    public boolean isAcceptableItem(ItemStack stack) {
+        return ConfigUtils.checkAcceptableItems("Electrifying Shot", stack, target);
+    }
+
+    @Override
+    public boolean isTreasure() {
+        return ExtraEnchantsMain.CONFIG.electrifyingShot.isTreasure();
+    }
+
+    @Override
+    public boolean isAvailableForEnchantedBookOffer() {
+        return ExtraEnchantsMain.CONFIG.electrifyingShot.isAvailableForEnchantedBookOffer();
+    }
+
+    @Override
+    public boolean isAvailableForRandomSelection() {
+        return ExtraEnchantsMain.CONFIG.electrifyingShot.isAvailableForRandomSelection();
     }
 
     @Override

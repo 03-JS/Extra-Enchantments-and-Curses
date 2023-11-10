@@ -1,5 +1,7 @@
 package net.js03.extraenchantments.enchantments;
 
+import net.js03.extraenchantments.ExtraEnchantsMain;
+import net.js03.extraenchantments.config.ConfigUtils;
 import net.js03.extraenchantments.curses.CurseOfBlindness;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
@@ -8,12 +10,13 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.item.ItemStack;
 
 ;
 
 public class SpectralVision extends Enchantment {
     public SpectralVision(Rarity weight, EquipmentSlot[] slotTypes) {
-        super(weight, EnchantmentTarget.ARMOR_HEAD, slotTypes);
+        super(weight, ExtraEnchantsMain.CONFIG.spectralVision.target(), slotTypes);
     }
 
     @Override
@@ -28,7 +31,27 @@ public class SpectralVision extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return 1;
+        return ExtraEnchantsMain.CONFIG.spectralVision.maxLevel();
+    }
+
+    @Override
+    public boolean isAcceptableItem(ItemStack stack) {
+        return ConfigUtils.checkAcceptableItems("Spectral Vision", stack, target);
+    }
+
+    @Override
+    public boolean isTreasure() {
+        return ExtraEnchantsMain.CONFIG.spectralVision.isTreasure();
+    }
+
+    @Override
+    public boolean isAvailableForEnchantedBookOffer() {
+        return ExtraEnchantsMain.CONFIG.spectralVision.isAvailableForEnchantedBookOffer();
+    }
+
+    @Override
+    public boolean isAvailableForRandomSelection() {
+        return ExtraEnchantsMain.CONFIG.spectralVision.isAvailableForRandomSelection();
     }
 
     @Override

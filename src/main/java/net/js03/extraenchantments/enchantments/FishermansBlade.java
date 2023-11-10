@@ -1,10 +1,13 @@
 package net.js03.extraenchantments.enchantments;
 
+import net.js03.extraenchantments.ExtraEnchantsMain;
+import net.js03.extraenchantments.config.ConfigUtils;
 import net.minecraft.enchantment.DamageEnchantment;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EntityGroup;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.item.ItemStack;
 
 public class FishermansBlade extends Enchantment {
 
@@ -19,7 +22,27 @@ public class FishermansBlade extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return 5;
+        return ExtraEnchantsMain.CONFIG.fishermansBlade.maxLevel();
+    }
+
+    @Override
+    public boolean isAcceptableItem(ItemStack stack) {
+        return ConfigUtils.checkAcceptableItems("Fishermans Blade", stack, target);
+    }
+
+    @Override
+    public boolean isTreasure() {
+        return ExtraEnchantsMain.CONFIG.fishermansBlade.isTreasure();
+    }
+
+    @Override
+    public boolean isAvailableForEnchantedBookOffer() {
+        return ExtraEnchantsMain.CONFIG.fishermansBlade.isAvailableForEnchantedBookOffer();
+    }
+
+    @Override
+    public boolean isAvailableForRandomSelection() {
+        return ExtraEnchantsMain.CONFIG.fishermansBlade.isAvailableForRandomSelection();
     }
 
     @Override

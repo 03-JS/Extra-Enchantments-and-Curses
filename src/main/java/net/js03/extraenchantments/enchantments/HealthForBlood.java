@@ -1,5 +1,7 @@
 package net.js03.extraenchantments.enchantments;
 
+import net.js03.extraenchantments.ExtraEnchantsMain;
+import net.js03.extraenchantments.config.ConfigUtils;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
@@ -36,12 +38,27 @@ public class HealthForBlood extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return 3;
+        return ExtraEnchantsMain.CONFIG.lifesteal.maxLevel();
     }
 
     @Override
     public boolean isAcceptableItem(ItemStack stack) {
-        return super.isAcceptableItem(stack) || stack.getItem() instanceof AxeItem;
+        return ConfigUtils.checkAcceptableItems("Lifesteal", stack, target);
+    }
+
+    @Override
+    public boolean isTreasure() {
+        return ExtraEnchantsMain.CONFIG.lifesteal.isTreasure();
+    }
+
+    @Override
+    public boolean isAvailableForEnchantedBookOffer() {
+        return ExtraEnchantsMain.CONFIG.lifesteal.isAvailableForEnchantedBookOffer();
+    }
+
+    @Override
+    public boolean isAvailableForRandomSelection() {
+        return ExtraEnchantsMain.CONFIG.lifesteal.isAvailableForRandomSelection();
     }
 
     @Override

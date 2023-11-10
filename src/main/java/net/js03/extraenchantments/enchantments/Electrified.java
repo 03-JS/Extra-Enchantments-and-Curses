@@ -1,10 +1,13 @@
 package net.js03.extraenchantments.enchantments;
 
+import net.js03.extraenchantments.ExtraEnchantsMain;
+import net.js03.extraenchantments.config.ConfigUtils;
 import net.js03.extraenchantments.curses.CurseOfZeus;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.*;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.item.ItemStack;
 import net.minecraft.registry.tag.DamageTypeTags;
 
 
@@ -14,7 +17,7 @@ public class Electrified extends Enchantment {
     private int hitsAttacker;
 
     public Electrified(Rarity weight, EquipmentSlot[] slotTypes) {
-        super(weight, EnchantmentTarget.WEARABLE, slotTypes);
+        super(weight, ExtraEnchantsMain.CONFIG.electrified.target(), slotTypes);
         hitsTarget = 0;
         hitsAttacker = 0;
     }
@@ -26,7 +29,7 @@ public class Electrified extends Enchantment {
 
     @Override
     public boolean isTreasure() {
-        return true;
+        return ExtraEnchantsMain.CONFIG.electrified.isTreasure();
     }
 
     @Override
@@ -41,7 +44,22 @@ public class Electrified extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return 1;
+        return ExtraEnchantsMain.CONFIG.electrified.maxLevel();
+    }
+
+    @Override
+    public boolean isAcceptableItem(ItemStack stack) {
+        return ConfigUtils.checkAcceptableItems("Electrified", stack, target);
+    }
+
+    @Override
+    public boolean isAvailableForEnchantedBookOffer() {
+        return ExtraEnchantsMain.CONFIG.electrified.isAvailableForEnchantedBookOffer();
+    }
+
+    @Override
+    public boolean isAvailableForRandomSelection() {
+        return ExtraEnchantsMain.CONFIG.electrified.isAvailableForRandomSelection();
     }
 
     @Override

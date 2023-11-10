@@ -1,5 +1,7 @@
 package net.js03.extraenchantments.enchantments;
 
+import net.js03.extraenchantments.ExtraEnchantsMain;
+import net.js03.extraenchantments.config.ConfigUtils;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
@@ -10,7 +12,7 @@ import net.minecraft.item.TridentItem;
 
 public class Reach extends Enchantment {
     public Reach(Rarity weight, EquipmentSlot[] slotTypes) {
-        super(weight, EnchantmentTarget.DIGGER, slotTypes);
+        super(weight, ExtraEnchantsMain.CONFIG.reach.target(), slotTypes);
     }
 
     public int getMinPower(int level) {
@@ -22,7 +24,7 @@ public class Reach extends Enchantment {
     }
 
     public int getMaxLevel() {
-        return 5;
+        return ExtraEnchantsMain.CONFIG.reach.maxLevel();
     }
 
     @Override
@@ -31,6 +33,21 @@ public class Reach extends Enchantment {
     }
 
     public boolean isAcceptableItem(ItemStack stack) {
-        return stack.getItem() instanceof SwordItem || stack.getItem() instanceof ShearsItem || stack.getItem() instanceof TridentItem || super.isAcceptableItem(stack);
+        return ConfigUtils.checkAcceptableItems("Reach", stack, target);
+    }
+
+    @Override
+    public boolean isTreasure() {
+        return ExtraEnchantsMain.CONFIG.reach.isTreasure();
+    }
+
+    @Override
+    public boolean isAvailableForEnchantedBookOffer() {
+        return ExtraEnchantsMain.CONFIG.reach.isAvailableForEnchantedBookOffer();
+    }
+
+    @Override
+    public boolean isAvailableForRandomSelection() {
+        return ExtraEnchantsMain.CONFIG.reach.isAvailableForRandomSelection();
     }
 }

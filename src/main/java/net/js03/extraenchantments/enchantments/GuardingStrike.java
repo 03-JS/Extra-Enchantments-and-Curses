@@ -1,5 +1,7 @@
 package net.js03.extraenchantments.enchantments;
 
+import net.js03.extraenchantments.ExtraEnchantsMain;
+import net.js03.extraenchantments.config.ConfigUtils;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
@@ -32,7 +34,7 @@ public class GuardingStrike extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return 3;
+        return ExtraEnchantsMain.CONFIG.guardingStrike.maxLevel();
     }
 
     @Override
@@ -42,10 +44,25 @@ public class GuardingStrike extends Enchantment {
 
     @Override
     public boolean isAcceptableItem(ItemStack stack) {
-        return super.isAcceptableItem(stack) || stack.getItem() instanceof AxeItem;
+        return ConfigUtils.checkAcceptableItems("Guarding Strike", stack, target);
     }
 
-//    @Override
+    @Override
+    public boolean isTreasure() {
+        return ExtraEnchantsMain.CONFIG.guardingStrike.isTreasure();
+    }
+
+    @Override
+    public boolean isAvailableForEnchantedBookOffer() {
+        return ExtraEnchantsMain.CONFIG.guardingStrike.isAvailableForEnchantedBookOffer();
+    }
+
+    @Override
+    public boolean isAvailableForRandomSelection() {
+        return ExtraEnchantsMain.CONFIG.guardingStrike.isAvailableForRandomSelection();
+    }
+
+    //    @Override
 //    public void onTargetDamaged(LivingEntity user, Entity target, int level) {
 //        if (target instanceof HostileEntity || target instanceof PlayerEntity || target instanceof HoglinEntity || target instanceof BeeEntity
 //                || target instanceof DolphinEntity || target instanceof GoatEntity || target instanceof GolemEntity || target instanceof LlamaEntity

@@ -1,5 +1,7 @@
 package net.js03.extraenchantments.enchantments;
 
+import net.js03.extraenchantments.ExtraEnchantsMain;
+import net.js03.extraenchantments.config.ConfigUtils;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.enchantment.Enchantments;
@@ -7,6 +9,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -21,7 +24,7 @@ public class TargetLock extends Enchantment {
     // private Item previousItem;
 
     public TargetLock(Rarity weight, EquipmentSlot[] slotTypes) {
-        super(weight, EnchantmentTarget.CROSSBOW, slotTypes);
+        super(weight, ExtraEnchantsMain.CONFIG.targetLock.target(), slotTypes);
         // arrows = 1;
         // arrowThreshold = 3;
         // hits = 0;
@@ -42,7 +45,7 @@ public class TargetLock extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return 1;
+        return ExtraEnchantsMain.CONFIG.targetLock.maxLevel();
     }
 
     @Override
@@ -52,12 +55,22 @@ public class TargetLock extends Enchantment {
 
     @Override
     public boolean isAvailableForEnchantedBookOffer() {
-        return true;
+        return ExtraEnchantsMain.CONFIG.targetLock.isAvailableForEnchantedBookOffer();
     }
 
     @Override
     public boolean isTreasure() {
-        return true;
+        return ExtraEnchantsMain.CONFIG.targetLock.isTreasure();
+    }
+
+    @Override
+    public boolean isAcceptableItem(ItemStack stack) {
+        return ConfigUtils.checkAcceptableItems("Target Lock", stack, target);
+    }
+
+    @Override
+    public boolean isAvailableForRandomSelection() {
+        return ExtraEnchantsMain.CONFIG.targetLock.isAvailableForRandomSelection();
     }
 
     @Override

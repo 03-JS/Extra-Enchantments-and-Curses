@@ -1,5 +1,7 @@
 package net.js03.extraenchantments.enchantments;
 
+import net.js03.extraenchantments.ExtraEnchantsMain;
+import net.js03.extraenchantments.config.ConfigUtils;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
@@ -32,7 +34,7 @@ public class Frenzy extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return 2;
+        return ExtraEnchantsMain.CONFIG.frenzy.maxLevel();
     }
 
     @Override
@@ -42,10 +44,25 @@ public class Frenzy extends Enchantment {
 
     @Override
     public boolean isAcceptableItem(ItemStack stack) {
-        return super.isAcceptableItem(stack) || stack.getItem() instanceof AxeItem;
+        return ConfigUtils.checkAcceptableItems("Frenzy", stack, target);
     }
 
-//    @Override
+    @Override
+    public boolean isTreasure() {
+        return ExtraEnchantsMain.CONFIG.frenzy.isTreasure();
+    }
+
+    @Override
+    public boolean isAvailableForEnchantedBookOffer() {
+        return ExtraEnchantsMain.CONFIG.frenzy.isAvailableForEnchantedBookOffer();
+    }
+
+    @Override
+    public boolean isAvailableForRandomSelection() {
+        return ExtraEnchantsMain.CONFIG.frenzy.isAvailableForRandomSelection();
+    }
+
+    //    @Override
 //    public void onTargetDamaged(LivingEntity user, Entity target, int level) {
 //        int rng = (int) (Math.random() * 3);
 //        if (target instanceof HostileEntity || target instanceof PlayerEntity || target instanceof HoglinEntity || target instanceof BeeEntity

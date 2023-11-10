@@ -1,5 +1,7 @@
 package net.js03.extraenchantments.enchantments;
 
+import net.js03.extraenchantments.ExtraEnchantsMain;
+import net.js03.extraenchantments.config.ConfigUtils;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
@@ -45,7 +47,7 @@ public class SoulReaper extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return 1;
+        return ExtraEnchantsMain.CONFIG.soulReaper.maxLevel();
     }
 
     @Override
@@ -55,10 +57,25 @@ public class SoulReaper extends Enchantment {
 
     @Override
     public boolean isAcceptableItem(ItemStack stack) {
-        return super.isAcceptableItem(stack) || stack.getItem() instanceof AxeItem;
+        return ConfigUtils.checkAcceptableItems("Soul Reaper", stack, target);
     }
 
-//    @Override
+    @Override
+    public boolean isTreasure() {
+        return ExtraEnchantsMain.CONFIG.soulReaper.isTreasure();
+    }
+
+    @Override
+    public boolean isAvailableForEnchantedBookOffer() {
+        return ExtraEnchantsMain.CONFIG.soulReaper.isAvailableForEnchantedBookOffer();
+    }
+
+    @Override
+    public boolean isAvailableForRandomSelection() {
+        return ExtraEnchantsMain.CONFIG.soulReaper.isAvailableForRandomSelection();
+    }
+
+    //    @Override
 //    public void onTargetDamaged(LivingEntity user, Entity target, int level) {
 //        if (target instanceof HostileEntity || target instanceof PlayerEntity || target instanceof HoglinEntity || target instanceof BeeEntity
 //                || target instanceof DolphinEntity || target instanceof GoatEntity || target instanceof GolemEntity || target instanceof LlamaEntity

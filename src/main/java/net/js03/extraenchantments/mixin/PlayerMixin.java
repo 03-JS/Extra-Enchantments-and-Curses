@@ -57,9 +57,18 @@ public abstract class PlayerMixin extends LivingEntity {
         ItemStack itemStackMainHand = this.getEquippedStack(EquipmentSlot.MAINHAND);
 
         // Armor level
-        int slownessLevel = EnchantmentHelper.getLevel(ExtraEnchantsMain.CURSE_OF_SLOWNESS, itemStackFeet);
-        int blindnessLevel = EnchantmentHelper.getLevel(ExtraEnchantsMain.CURSE_OF_BLINDNESS, itemStackHead);
-        int nauseaLevel = EnchantmentHelper.getLevel(ExtraEnchantsMain.CURSE_OF_NAUSEA, itemStackHead);
+        int slownessLevelH = EnchantmentHelper.getLevel(ExtraEnchantsMain.CURSE_OF_SLOWNESS, itemStackHead);
+        int slownessLevelC = EnchantmentHelper.getLevel(ExtraEnchantsMain.CURSE_OF_SLOWNESS, itemStackChest);
+        int slownessLevelL = EnchantmentHelper.getLevel(ExtraEnchantsMain.CURSE_OF_SLOWNESS, itemStackLegs);
+        int slownessLevelF = EnchantmentHelper.getLevel(ExtraEnchantsMain.CURSE_OF_SLOWNESS, itemStackFeet);
+        int blindnessLevelH = EnchantmentHelper.getLevel(ExtraEnchantsMain.CURSE_OF_BLINDNESS, itemStackHead);
+        int blindnessLevelC = EnchantmentHelper.getLevel(ExtraEnchantsMain.CURSE_OF_BLINDNESS, itemStackChest);
+        int blindnessLevelL = EnchantmentHelper.getLevel(ExtraEnchantsMain.CURSE_OF_BLINDNESS, itemStackLegs);
+        int blindnessLevelF = EnchantmentHelper.getLevel(ExtraEnchantsMain.CURSE_OF_BLINDNESS, itemStackFeet);
+        int nauseaLevelH = EnchantmentHelper.getLevel(ExtraEnchantsMain.CURSE_OF_NAUSEA, itemStackHead);
+        int nauseaLevelC = EnchantmentHelper.getLevel(ExtraEnchantsMain.CURSE_OF_NAUSEA, itemStackChest);
+        int nauseaLevelL = EnchantmentHelper.getLevel(ExtraEnchantsMain.CURSE_OF_NAUSEA, itemStackLegs);
+        int nauseaLevelF = EnchantmentHelper.getLevel(ExtraEnchantsMain.CURSE_OF_NAUSEA, itemStackFeet);
         int weaknessLevelF = EnchantmentHelper.getLevel(ExtraEnchantsMain.CURSE_OF_WEAKNESS, itemStackFeet);
         int weaknessLevelL = EnchantmentHelper.getLevel(ExtraEnchantsMain.CURSE_OF_WEAKNESS, itemStackLegs);
         int weaknessLevelC = EnchantmentHelper.getLevel(ExtraEnchantsMain.CURSE_OF_WEAKNESS, itemStackChest);
@@ -77,14 +86,14 @@ public abstract class PlayerMixin extends LivingEntity {
         int attritionLevel = EnchantmentHelper.getLevel(ExtraEnchantsMain.CURSE_OF_ATTRITION, itemStackMainHand);
 
         // Armor behaviour
-        if (slownessLevel > 0) {
+        if (slownessLevelH > 0 || slownessLevelC > 0 || slownessLevelL > 0 || slownessLevelF > 0) {
             this.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 20, 3, false, false, false));
             this.addStatusEffect(new StatusEffectInstance(StatusEffects.MINING_FATIGUE, 20, 3, false, false, false));
         }
-        if (blindnessLevel > 0) {
+        if (blindnessLevelH > 0 || blindnessLevelC > 0 || blindnessLevelL > 0 || blindnessLevelF > 0) {
             this.addStatusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 40, 0, false, false, false));
         }
-        if (nauseaLevel > 0) {
+        if (nauseaLevelH > 0 || nauseaLevelC > 0 || nauseaLevelL > 0 || nauseaLevelF > 0) {
             this.addStatusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 90, 0, false, false, false));
         }
         if (weaknessLevelC > 0 || weaknessLevelH > 0 || weaknessLevelL > 0 || weaknessLevelF > 0) {

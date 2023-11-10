@@ -1,5 +1,7 @@
 package net.js03.extraenchantments.enchantments;
 
+import net.js03.extraenchantments.ExtraEnchantsMain;
+import net.js03.extraenchantments.config.ConfigUtils;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.enchantment.Enchantments;
@@ -13,7 +15,7 @@ import net.minecraft.item.ItemStack;
 
 public class FreezingThorns extends Enchantment {
     public FreezingThorns(Rarity weight, EquipmentSlot[] slotTypes) {
-        super(weight, EnchantmentTarget.ARMOR_CHEST, slotTypes);
+        super(weight, ExtraEnchantsMain.CONFIG.freezingThorns.target(), slotTypes);
     }
 
     @Override
@@ -28,12 +30,27 @@ public class FreezingThorns extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return 3;
+        return ExtraEnchantsMain.CONFIG.freezingThorns.maxLevel();
     }
 
     @Override
     public boolean isAcceptableItem(ItemStack stack) {
-        return stack.getItem() instanceof ArmorItem;
+        return ConfigUtils.checkAcceptableItems("Freezing Thorns", stack, target);
+    }
+
+    @Override
+    public boolean isTreasure() {
+        return ExtraEnchantsMain.CONFIG.freezingThorns.isTreasure();
+    }
+
+    @Override
+    public boolean isAvailableForEnchantedBookOffer() {
+        return ExtraEnchantsMain.CONFIG.freezingThorns.isAvailableForEnchantedBookOffer();
+    }
+
+    @Override
+    public boolean isAvailableForRandomSelection() {
+        return ExtraEnchantsMain.CONFIG.freezingThorns.isAvailableForRandomSelection();
     }
 
     @Override

@@ -1,5 +1,7 @@
 package net.js03.extraenchantments.enchantments;
 
+import net.js03.extraenchantments.ExtraEnchantsMain;
+import net.js03.extraenchantments.config.ConfigUtils;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
@@ -7,7 +9,7 @@ import net.minecraft.item.*;
 
 public class Swiftness extends Enchantment {
     public Swiftness(Rarity weight, EquipmentSlot[] slotTypes) {
-        super(weight, EnchantmentTarget.WEAPON, slotTypes);
+        super(weight, ExtraEnchantsMain.CONFIG.swiftness.target(), slotTypes);
     }
 
     public int getMinPower(int level) {
@@ -19,10 +21,25 @@ public class Swiftness extends Enchantment {
     }
 
     public int getMaxLevel() {
-        return 5;
+        return ExtraEnchantsMain.CONFIG.swiftness.;
     }
 
     public boolean isAcceptableItem(ItemStack stack) {
-        return stack.getItem() instanceof PickaxeItem || stack.getItem() instanceof AxeItem || stack.getItem() instanceof ShovelItem || stack.getItem() instanceof HoeItem || stack.getItem() instanceof TridentItem || super.isAcceptableItem(stack);
+        return ConfigUtils.checkAcceptableItems("Swiftness", stack, target);
+    }
+
+    @Override
+    public boolean isTreasure() {
+        return ExtraEnchantsMain.CONFIG.swiftness.isTreasure();
+    }
+
+    @Override
+    public boolean isAvailableForEnchantedBookOffer() {
+        return ExtraEnchantsMain.CONFIG.swiftness.isAvailableForEnchantedBookOffer();
+    }
+
+    @Override
+    public boolean isAvailableForRandomSelection() {
+        return ExtraEnchantsMain.CONFIG.swiftness.isAvailableForRandomSelection();
     }
 }

@@ -1,5 +1,7 @@
 package net.js03.extraenchantments.enchantments;
 
+import net.js03.extraenchantments.ExtraEnchantsMain;
+import net.js03.extraenchantments.config.ConfigUtils;
 import net.minecraft.block.*;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
@@ -8,6 +10,7 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.fluid.LavaFluid;
+import net.minecraft.item.ItemStack;
 import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -16,7 +19,7 @@ import net.minecraft.world.World;
 public class HellWalker extends Enchantment {
 
     public HellWalker(Rarity weight, EquipmentSlot[] slotTypes) {
-        super(weight, EnchantmentTarget.ARMOR_FEET, slotTypes);
+        super(weight, ExtraEnchantsMain.CONFIG.hellwalker.target(), slotTypes);
     }
 
     @Override
@@ -33,21 +36,26 @@ public class HellWalker extends Enchantment {
     }
 
     public boolean isTreasure() {
-        return true;
+        return ExtraEnchantsMain.CONFIG.hellwalker.isTreasure();
     }
 
     @Override
     public boolean isAvailableForEnchantedBookOffer() {
-        return false;
+        return ExtraEnchantsMain.CONFIG.hellwalker.isAvailableForEnchantedBookOffer();
     }
 
     @Override
     public boolean isAvailableForRandomSelection() {
-        return false;
+        return ExtraEnchantsMain.CONFIG.hellwalker.isAvailableForRandomSelection();
     }
 
     public int getMaxLevel() {
-        return 1;
+        return ExtraEnchantsMain.CONFIG.hellwalker.maxLevel();
+    }
+
+    @Override
+    public boolean isAcceptableItem(ItemStack stack) {
+        return ConfigUtils.checkAcceptableItems("Hellwalker", stack, target);
     }
 
     public static void freezeLava(LivingEntity entity, World world, BlockPos blockPos) {

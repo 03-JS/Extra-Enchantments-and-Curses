@@ -1,5 +1,7 @@
 package net.js03.extraenchantments.enchantments;
 
+import net.js03.extraenchantments.ExtraEnchantsMain;
+import net.js03.extraenchantments.config.ConfigUtils;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
@@ -11,7 +13,7 @@ import net.minecraft.registry.tag.DamageTypeTags;
 
 public class EnigmaResonator extends Enchantment {
     public EnigmaResonator(Rarity weight, EquipmentSlot[] slotTypes) {
-        super(weight, EnchantmentTarget.WEAPON, slotTypes);
+        super(weight, ExtraEnchantsMain.CONFIG.enigmaResonator.target(), slotTypes);
     }
 
     @Override
@@ -26,7 +28,7 @@ public class EnigmaResonator extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return 3;
+        return ExtraEnchantsMain.CONFIG.enigmaResonator.maxLevel();
     }
 
     @Override
@@ -36,10 +38,25 @@ public class EnigmaResonator extends Enchantment {
 
     @Override
     public boolean isAcceptableItem(ItemStack stack) {
-        return stack.getItem() instanceof AxeItem || super.isAcceptableItem(stack);
+        return ConfigUtils.checkAcceptableItems("Enigma Resonator", stack, target);
     }
 
-//    @Override
+    @Override
+    public boolean isTreasure() {
+        return ExtraEnchantsMain.CONFIG.enigmaResonator.isTreasure();
+    }
+
+    @Override
+    public boolean isAvailableForEnchantedBookOffer() {
+        return ExtraEnchantsMain.CONFIG.enigmaResonator.isAvailableForEnchantedBookOffer();
+    }
+
+    @Override
+    public boolean isAvailableForRandomSelection() {
+        return ExtraEnchantsMain.CONFIG.enigmaResonator.isAvailableForRandomSelection();
+    }
+
+    //    @Override
 //    public void onTargetDamaged(LivingEntity user, Entity target, int level) {
 //        if (target instanceof LivingEntity) {
 //            if (!((LivingEntity) target).getRecentDamageSource().isIn(DamageTypeTags.IS_PROJECTILE)) {

@@ -17,6 +17,7 @@ public class ConfigModel {
         public EnchantmentTarget target;
         @Nest
         public ItemOptions acceptableItems;
+        @RestartRequired
         public Enchantment.Rarity weight;
 
         public EnchantmentOptions(int maxLevel, boolean isTreasure, boolean isAvailableForEnchantedBookOffer, boolean isAvailableForRandomSelection, EnchantmentTarget target, ItemOptions acceptableItems, Enchantment.Rarity weight) {
@@ -66,7 +67,76 @@ public class ConfigModel {
     public EnchantmentOptions burningThorns = new EnchantmentOptions(3, false, true, true, EnchantmentTarget.ARMOR_CHEST,
             new ItemOptions(true, false, false, false, false, false, false, false, false, false, false), Enchantment.Rarity.VERY_RARE);
     @Nest
+    public EnchantmentOptions electrified = new EnchantmentOptions(1, true, true, true, EnchantmentTarget.ARMOR,
+            new ItemOptions(), Enchantment.Rarity.VERY_RARE);
+    @Nest
+    public EnchantmentOptions electrifyingShot = new EnchantmentOptions(1, false, true, true, EnchantmentTarget.BOW,
+            new ItemOptions(), Enchantment.Rarity.VERY_RARE);
+    @Nest
+    public EnchantmentOptions enigmaResonator = new EnchantmentOptions(3, false, true, true, EnchantmentTarget.WEAPON,
+            new ItemOptions(false, false, true, false, false, false, false, false, false, false, false), Enchantment.Rarity.RARE);
+    @Nest
+    public EnchantmentOptions xpCatalyst = new EnchantmentOptions(5, false, true, true, EnchantmentTarget.FISHING_ROD,
+            new ItemOptions(false, true, true, true, true, true, false, false, false, true, false), Enchantment.Rarity.RARE);
+    @Nest
+    public EnchantmentOptions fishermansBlade = new EnchantmentOptions(5, false, true, true, EnchantmentTarget.WEAPON,
+            new ItemOptions(), Enchantment.Rarity.UNCOMMON);
+    @Nest
+    public EnchantmentOptions freezingAspect = new EnchantmentOptions(2, false, true, true, EnchantmentTarget.WEAPON,
+            new ItemOptions(), Enchantment.Rarity.RARE);
+    @Nest
+    public EnchantmentOptions freezingThorns = new EnchantmentOptions(3, false, true, true, EnchantmentTarget.ARMOR_CHEST,
+            new ItemOptions(true, false, false, false, false, false, false, false, false, false, false), Enchantment.Rarity.VERY_RARE);
+    @Nest
+    public EnchantmentOptions frenzy = new EnchantmentOptions(2, false, true, true, EnchantmentTarget.WEAPON,
+            new ItemOptions(false, false, true, false, false, false, false, false, false, false, false), Enchantment.Rarity.RARE);
+    @Nest
+    public EnchantmentOptions guardingStrike = new EnchantmentOptions(3, false, true, true, EnchantmentTarget.WEAPON,
+            new ItemOptions(false, false, true, false, false, false, false, false, false, false, false), Enchantment.Rarity.RARE);
+    @Nest
+    public EnchantmentOptions lifesteal = new EnchantmentOptions(3, false, true, true, EnchantmentTarget.WEAPON,
+            new ItemOptions(false, false, true, false, false, false, false, false, false, false, false), Enchantment.Rarity.RARE);
+    @Nest
+    public EnchantmentOptions painCycle = new EnchantmentOptions(1, false, true, true, EnchantmentTarget.WEAPON,
+            new ItemOptions(false, false, true, false, false, false, false, false, false, false, false), Enchantment.Rarity.RARE);
+    @Nest
+    public EnchantmentOptions soulReaper = new EnchantmentOptions(1, false, true, true, EnchantmentTarget.WEAPON,
+            new ItemOptions(false, false, true, false, false, false, false, false, false, false, false), Enchantment.Rarity.RARE);
+    @Nest
+    public EnchantmentOptions hellwalker = new EnchantmentOptions(1, true, false, false, EnchantmentTarget.ARMOR_FEET,
+            new ItemOptions(), Enchantment.Rarity.VERY_RARE);
+    @Nest
+    public EnchantmentOptions incandescent = new EnchantmentOptions(1, false, true, true, EnchantmentTarget.CROSSBOW,
+            new ItemOptions(), Enchantment.Rarity.RARE);
+    @Nest
+    public EnchantmentOptions levitationalShot = new EnchantmentOptions(1, false, true, true, EnchantmentTarget.CROSSBOW,
+            new ItemOptions(), Enchantment.Rarity.VERY_RARE);
+    @Nest
+    public EnchantmentOptions illagersBane = new EnchantmentOptions(5, false, true, true, EnchantmentTarget.WEAPON,
+            new ItemOptions(), Enchantment.Rarity.UNCOMMON);
+    @Nest
     public EnchantmentOptions overshield = new EnchantmentOptions(5, true, false, false, EnchantmentTarget.ARMOR_CHEST,
+            new ItemOptions(), Enchantment.Rarity.VERY_RARE);
+    @Nest
+    public EnchantmentOptions reach = new EnchantmentOptions(5, false, true, true, EnchantmentTarget.DIGGER,
+            new ItemOptions(false, true, false, false, false, false, false, false, false, true, false), Enchantment.Rarity.RARE);
+    @Nest
+    public EnchantmentOptions swiftness = new EnchantmentOptions(5, false, true, true, EnchantmentTarget.WEAPON,
+            new ItemOptions(false, false, true, true, true, true, false, false, false, true, false), Enchantment.Rarity.RARE);
+    @Nest
+    public EnchantmentOptions resonatingShot = new EnchantmentOptions(3, false, true, true, EnchantmentTarget.BOW,
+            new ItemOptions(), Enchantment.Rarity.RARE);
+    @Nest
+    public EnchantmentOptions shadowShot = new EnchantmentOptions(1, false, true, true, EnchantmentTarget.BOW,
+            new ItemOptions(), Enchantment.Rarity.VERY_RARE);
+    @Nest
+    public EnchantmentOptions spectralVision = new EnchantmentOptions(1, false, true, true, EnchantmentTarget.ARMOR_HEAD,
+            new ItemOptions(), Enchantment.Rarity.VERY_RARE);
+    @Nest
+    public EnchantmentOptions supercharge = new EnchantmentOptions(5, false, true, true, EnchantmentTarget.CROSSBOW,
+            new ItemOptions(), Enchantment.Rarity.VERY_RARE);
+    @Nest
+    public EnchantmentOptions targetLock = new EnchantmentOptions(1, true, true, true, EnchantmentTarget.CROSSBOW,
             new ItemOptions(), Enchantment.Rarity.VERY_RARE);
 
     @SectionHeader("Curses")

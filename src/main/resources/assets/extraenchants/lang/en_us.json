@@ -68,7 +68,7 @@
   "enchantment.extra_enchantments.experience_catalyst": "Experience Catalyst",
   "enchantment.extra_enchantments.experience_catalyst.desc": "Increases the amount of experience you get when the item is in your main hand",
 
-  "text.config.eec-config.title": "Extra Enchantments & Curses v1.8 for Fabric",
+  "text.config.eec-config.title": "Extra Enchantments & Curses v1.8.1 for Fabric",
   "text.config.eec-config.section.Enchantments": "Enchantments",
   "text.config.eec-config.category.burningThorns": "Burning Thorns",
   "text.config.eec-config.option.burningThorns.maxLevel": "Max level",

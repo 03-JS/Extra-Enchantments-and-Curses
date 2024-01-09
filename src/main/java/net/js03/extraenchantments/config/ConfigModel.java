@@ -5,7 +5,7 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 
 @Modmenu(modId = "extra-enchantments-and-curses")
-@Config(name = "eec-config", wrapperName = "ExtraEnchantsConfig")
+@Config(name = "extra-enchantments-and-curses-config", wrapperName = "ExtraEnchantsConfig")
 public class ConfigModel {
     public static class EnchantmentOptions {
         @RangeConstraint(min = 1, max = 10)

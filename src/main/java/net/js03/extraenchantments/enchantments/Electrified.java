@@ -72,40 +72,44 @@ public class Electrified extends Enchantment {
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        rng = (int) (Math.random() * 11);
-        if (user.getWorld().isThundering()) {
-            hitsTarget++;
-            if (target instanceof LivingEntity && ((LivingEntity) target).getRecentDamageSource() != null) {
-                if (target instanceof PlayerEntity) {
-                    summonLightning(target, hitsTarget);
-                } else {
-                    if (((LivingEntity) target).getHealth() > 5) {
+        if (!ExtraEnchantsMain.CONFIG.electrified.effectsDisabled()) {
+            rng = (int) (Math.random() * 11);
+            if (user.getWorld().isThundering()) {
+                hitsTarget++;
+                if (target instanceof LivingEntity && ((LivingEntity) target).getRecentDamageSource() != null) {
+                    if (target instanceof PlayerEntity) {
                         summonLightning(target, hitsTarget);
+                    } else {
+                        if (((LivingEntity) target).getHealth() > 5) {
+                            summonLightning(target, hitsTarget);
+                        }
                     }
                 }
-            }
-            if (hitsTarget == 4) {
-                hitsTarget = 0;
+                if (hitsTarget == 4) {
+                    hitsTarget = 0;
+                }
             }
         }
     }
 
     @Override
     public void onUserDamaged(LivingEntity user, Entity attacker, int level) {
-        rng = (int) (Math.random() * 11);
-        if (user.getWorld().isThundering()) {
-            hitsAttacker++;
-            if (attacker instanceof LivingEntity) {
-                if (attacker instanceof PlayerEntity) {
-                    summonLightning(attacker, hitsAttacker);
-                } else {
-                    if (((LivingEntity) attacker).getHealth() > 5) {
+        if (!ExtraEnchantsMain.CONFIG.electrified.effectsDisabled()) {
+            rng = (int) (Math.random() * 11);
+            if (user.getWorld().isThundering()) {
+                hitsAttacker++;
+                if (attacker instanceof LivingEntity) {
+                    if (attacker instanceof PlayerEntity) {
                         summonLightning(attacker, hitsAttacker);
+                    } else {
+                        if (((LivingEntity) attacker).getHealth() > 5) {
+                            summonLightning(attacker, hitsAttacker);
+                        }
                     }
                 }
-            }
-            if (hitsAttacker == 4) {
-                hitsAttacker = 0;
+                if (hitsAttacker == 4) {
+                    hitsAttacker = 0;
+                }
             }
         }
     }

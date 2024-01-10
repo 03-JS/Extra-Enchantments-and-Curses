@@ -109,51 +109,56 @@ public abstract class PlayerMixin extends LivingEntity {
         if (spectralLevel > 0) {
             this.removeStatusEffect(StatusEffects.DARKNESS);
         }
-        if (overshieldLevelH > 0 || overshieldLevelC > 0 || overshieldLevelL > 0 || overshieldLevelF > 0) {
-            if (!isOvershieldActive) {
-                previousMaxHealth = Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).getValue();
-                isOvershieldActive = true;
+        if (!ExtraEnchantsMain.CONFIG.overshield.effectsDisabled()) {
+            if (overshieldLevelH > 0 || overshieldLevelC > 0 || overshieldLevelL > 0 || overshieldLevelF > 0) {
+                if (!isOvershieldActive) {
+                    previousMaxHealth = Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).getValue();
+                    isOvershieldActive = true;
+                    if (overshieldLevelH > 0) {
+                        Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(previousMaxHealth + overshieldLevelH * 2);
+                    }
+                    if (overshieldLevelC > 0) {
+                        Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(previousMaxHealth + overshieldLevelC * 2);
+                    }
+                    if (overshieldLevelL > 0) {
+                        Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(previousMaxHealth + overshieldLevelL * 2);
+                    }
+                    if (overshieldLevelF > 0) {
+                        Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(previousMaxHealth + overshieldLevelF * 2);
+                    }
+                    System.out.println("Previous max health (1) : " + previousMaxHealth);
+                }
+                isOvBonusActive = true;
                 if (overshieldLevelH > 0) {
-                    Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(previousMaxHealth + overshieldLevelH * 2);
+                    lastOvLevel = overshieldLevelH;
+                } else if (overshieldLevelC > 0) {
+                    lastOvLevel = overshieldLevelC;
+                } else if (overshieldLevelL > 0) {
+                    lastOvLevel = overshieldLevelL;
+                } else if (overshieldLevelF > 0) {
+                    lastOvLevel = overshieldLevelF;
                 }
-                if (overshieldLevelC > 0) {
-                    Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(previousMaxHealth + overshieldLevelC * 2);
-                }
-                if (overshieldLevelL > 0) {
-                    Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(previousMaxHealth + overshieldLevelL * 2);
-                }
-                if (overshieldLevelF > 0) {
-                    Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(previousMaxHealth + overshieldLevelF * 2);
-                }
-                System.out.println("Previous max health (1) : " + previousMaxHealth);
-            }
-            isOvBonusActive = true;
-            if (overshieldLevelH > 0) {
-                lastOvLevel = overshieldLevelH;
-            } else if (overshieldLevelC > 0) {
-                lastOvLevel = overshieldLevelC;
-            } else if (overshieldLevelL > 0) {
-                lastOvLevel = overshieldLevelL;
-            } else if (overshieldLevelF > 0) {
-                lastOvLevel = overshieldLevelF;
-            }
-        } else {
-            if (isOvershieldActive) {
-                isOvershieldActive = false;
-                if (previousMaxHealth != 0 && isOvBonusActive) {
-                    System.out.println("Previous max health (2) : " + previousMaxHealth);
-                    System.out.println("Restore health");
-                    isOvBonusActive = false;
-                    Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(previousMaxHealth);
-                } else {
-                    if (isOvBonusActive) {
-                        previousMaxHealth = Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).getValue() - (lastOvLevel * 2);
-                        Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(previousMaxHealth);
-                        System.out.println("Previous max health (3) : " + previousMaxHealth);
+            } else {
+                if (isOvershieldActive) {
+                    isOvershieldActive = false;
+                    if (previousMaxHealth != 0 && isOvBonusActive) {
+                        System.out.println("Previous max health (2) : " + previousMaxHealth);
+                        System.out.println("Restore health");
                         isOvBonusActive = false;
+                        Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(previousMaxHealth);
+                    } else {
+                        if (isOvBonusActive) {
+                            previousMaxHealth = Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).getValue() - (lastOvLevel * 2);
+                            Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(previousMaxHealth);
+                            System.out.println("Previous max health (3) : " + previousMaxHealth);
+                            isOvBonusActive = false;
+                        }
                     }
                 }
             }
+        } else {
+            isOvershieldActive = false;
+            Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(previousMaxHealth);
         }
 
         // Sword & Tools behaviour

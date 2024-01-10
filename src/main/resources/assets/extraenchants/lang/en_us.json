@@ -448,6 +448,8 @@
   "text.config.extra-enchantments-and-curses-config.option.overshield.acceptableItems.crossbow": "Crossbow",
   "text.config.extra-enchantments-and-curses-config.option.overshield.acceptableItems.shears": "Shears",
   "text.config.extra-enchantments-and-curses-config.option.overshield.weight": "Rarity",
+  "text.config.extra-enchantments-and-curses-config.option.overshield.effectsDisabled": "Disable effects",
+  "text.config.extra-enchantments-and-curses-config.option.overshield.effectsDisabled.tooltip": "Check this option if you want to disable the enchantment's effects",
   "text.config.extra-enchantments-and-curses-config.category.reach": "Reach",
   "text.config.extra-enchantments-and-curses-config.option.reach.maxLevel": "Max level",
   "text.config.extra-enchantments-and-curses-config.option.reach.isTreasure": "Treasure enchantment",

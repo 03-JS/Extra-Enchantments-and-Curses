@@ -67,6 +67,8 @@
   "enchantment.extra_enchantments.soul_reaper.desc": "Reduces the item's damage in exchange for a chance to heal the user with every hit on a neutral or hostile mob",
   "enchantment.extra_enchantments.experience_catalyst": "Experience Catalyst",
   "enchantment.extra_enchantments.experience_catalyst.desc": "Increases the amount of experience you get when the item is in your main hand",
+  "enchantment.extra_enchantments.energized": "Energized",
+  "enchantment.extra_enchantments.energized.desc": "Decreases the amount of exhaustion the player takes",
 
   "text.config.extra-enchantments-and-curses-config.title": "Extra Enchantments & Curses v1.8.2 for Fabric",
   "text.config.extra-enchantments-and-curses-config.section.Enchantments": "Enchantments",

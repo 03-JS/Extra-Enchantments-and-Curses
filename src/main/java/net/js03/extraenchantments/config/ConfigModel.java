@@ -75,6 +75,9 @@ public class ConfigModel {
     public EnchantmentOptions electrifyingShot = new EnchantmentOptions(1, false, true, true, EnchantmentTarget.BOW,
             new ItemOptions(), Enchantment.Rarity.VERY_RARE, false);
     @Nest
+    public EnchantmentOptions energized = new EnchantmentOptions(1, true, true, true, EnchantmentTarget.ARMOR_LEGS,
+            new ItemOptions(), Enchantment.Rarity.VERY_RARE, false);
+    @Nest
     public EnchantmentOptions enigmaResonator = new EnchantmentOptions(3, false, true, true, EnchantmentTarget.WEAPON,
             new ItemOptions(false, false, true, false, false, false, false, false, false, false, false), Enchantment.Rarity.RARE, false);
     @Nest

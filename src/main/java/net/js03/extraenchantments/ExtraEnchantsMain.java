@@ -54,6 +54,7 @@ public class ExtraEnchantsMain implements ModInitializer {
     public static final Enchantment CURSE_OF_ATTRITION = new CurseOfAttrition(CONFIG.curseOfAttrition.weight(), new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     public static final Enchantment OVERSHIELD = new Overshield(CONFIG.overshield.weight(), new EquipmentSlot[]{EquipmentSlot.CHEST});
     public static final Enchantment EXPERIENCE_CATALYST = new ExperienceCatalyst(CONFIG.xpCatalyst.weight(), new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+    public static final Enchantment ENERGIZED = new Energized(CONFIG.energized.weight(), new EquipmentSlot[]{EquipmentSlot.LEGS});
 
 
     @Override
@@ -79,6 +80,7 @@ public class ExtraEnchantsMain implements ModInitializer {
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "hellwalker"), HELLWALKER);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "spectral_vision"), SPECTRAL_VISION);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "electrified"), ELECTRIFIED);
+        Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "energized"), ENERGIZED);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "electrifying_shot"), ELECTRIFYING_SHOT);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "resonating_shot"), RESONATING_SHOT);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "shadow_shot"), SHADOW_SHOT);

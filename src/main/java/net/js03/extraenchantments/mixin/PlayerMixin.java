@@ -13,6 +13,8 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.*;
 import net.minecraft.entity.passive.*;
+import net.minecraft.entity.player.HungerManager;
+import net.minecraft.entity.player.PlayerAbilities;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.ItemStack;
@@ -20,6 +22,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -35,6 +38,12 @@ public abstract class PlayerMixin extends LivingEntity {
     @Shadow
     public abstract ItemStack getEquippedStack(EquipmentSlot slot);
 
+    @Shadow
+    public abstract HungerManager getHungerManager();
+
+    @Shadow
+    public abstract PlayerAbilities getAbilities();
+
     private int painCycleHits = 0;
     private Random rng = new Random();
 
@@ -46,7 +55,6 @@ public abstract class PlayerMixin extends LivingEntity {
     protected PlayerMixin(EntityType<? extends LivingEntity> entityType, World world) {
         super(entityType, world);
     }
-
 
     @Inject(method = "tick", at = @At("HEAD"))
     private void tick(CallbackInfo ci) {
@@ -261,7 +269,7 @@ public abstract class PlayerMixin extends LivingEntity {
             if (target instanceof LivingEntity) {
                 if (soulReaperLevel > 0) {
                     if (isEntityHostileOrNeutral) {
-                        int healingAmount = rng.nextInt(1,5);
+                        int healingAmount = rng.nextInt(1, 5);
                         int healingChance = rng.nextInt(6);
                         if (healingChance <= 1) {
                             this.getWorld().playSound(null, this.getBlockPos(), SoundEvents.PARTICLE_SOUL_ESCAPE, SoundCategory.MASTER, 3f, 1f);
@@ -322,5 +330,26 @@ public abstract class PlayerMixin extends LivingEntity {
                 ?
                 experience * EnchantmentHelper.getLevel(ExtraEnchantsMain.EXPERIENCE_CATALYST, this.getEquippedStack(EquipmentSlot.MAINHAND))
                 : experience;
+    }
+
+
+    /**
+     * @author JS03
+     * @reason To easily modify the amount of exhaustion the player receives
+     */
+    @Overwrite
+    public void addExhaustion(float exhaustion) {
+        if (this.getAbilities().invulnerable) {
+            return;
+        }
+        if (!this.getWorld().isClient) {
+            if (EnchantmentHelper.getLevel(ExtraEnchantsMain.ENERGIZED, this.getEquippedStack(EquipmentSlot.LEGS)) > 0) {
+                if (!ExtraEnchantsMain.CONFIG.energized.effectsDisabled()) {
+                    this.getHungerManager().addExhaustion(exhaustion / 2);
+                }
+            } else {
+                this.getHungerManager().addExhaustion(exhaustion);
+            }
+        }
     }
 }

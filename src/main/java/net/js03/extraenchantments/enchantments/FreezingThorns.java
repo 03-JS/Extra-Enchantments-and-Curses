@@ -59,10 +59,12 @@ public class FreezingThorns extends Enchantment {
     }
 
     public void onUserDamaged(LivingEntity user, Entity attacker, int level) {
-        int rng = (int) (1 + Math.random() * 4);
-        if (attacker instanceof LivingEntity && rng <= level && !(attacker instanceof BlazeEntity) && !(attacker instanceof MagmaCubeEntity)) {
-            if (!user.getWorld().getDimension().ultrawarm() && !attacker.isFrozen() && !attacker.isInLava()) {
-                attacker.setFrozenTicks(400);
+        if (!ExtraEnchantsMain.CONFIG.freezingThorns.effectsDisabled()) {
+            int rng = (int) (1 + Math.random() * 4);
+            if (attacker instanceof LivingEntity && rng <= level && !(attacker instanceof BlazeEntity) && !(attacker instanceof MagmaCubeEntity)) {
+                if (!user.getWorld().getDimension().ultrawarm() && !attacker.isFrozen() && !attacker.isInLava()) {
+                    attacker.setFrozenTicks(400);
+                }
             }
         }
     }

@@ -37,6 +37,9 @@ public class CurseOfIncompatibility extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
+        if (ExtraEnchantsMain.CONFIG.curseOfIncompatibility.effectsDisabled()) {
+            return true;
+        }
         return false;
     }
 

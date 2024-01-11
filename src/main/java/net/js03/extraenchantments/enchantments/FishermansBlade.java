@@ -17,6 +17,9 @@ public class FishermansBlade extends Enchantment {
 
     @Override
     public float getAttackDamage(int level, EntityGroup group) {
+        if (ExtraEnchantsMain.CONFIG.fishermansBlade.effectsDisabled()) {
+            return 0;
+        }
         return group == EntityGroup.AQUATIC ? (float) (level * 2.5) : 0;
     }
 

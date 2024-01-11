@@ -58,7 +58,7 @@ public class ResonatingShot extends Enchantment {
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        if (target instanceof LivingEntity) {
+        if (target instanceof LivingEntity && !ExtraEnchantsMain.CONFIG.resonatingShot.effectsDisabled()) {
             int rng = (int) (Math.random() * 35);
             if (rng <= level) {
                 if (((LivingEntity) target).getRecentDamageSource() != null && ((LivingEntity) target).getRecentDamageSource().isIn(DamageTypeTags.IS_PROJECTILE)) {

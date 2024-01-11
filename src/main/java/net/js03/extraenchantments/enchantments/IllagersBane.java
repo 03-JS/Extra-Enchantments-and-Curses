@@ -17,6 +17,9 @@ public class IllagersBane extends Enchantment {
 
     @Override
     public float getAttackDamage(int level, EntityGroup group) {
+        if (ExtraEnchantsMain.CONFIG.illagersBane.effectsDisabled()) {
+            return 0;
+        }
         return group == EntityGroup.ILLAGER ? level * 2.5F : 0;
     }
 

@@ -29,7 +29,7 @@ public abstract class LivingEntityMixin extends Entity {
     private void applyMovementEffects(BlockPos pos, CallbackInfo ci) {
         LivingEntity casted = (LivingEntity) (Object) this;
         int i = EnchantmentHelper.getEquipmentLevel(ExtraEnchantsMain.HELLWALKER, casted);
-        if (i > 0) {
+        if (i > 0 && !ExtraEnchantsMain.CONFIG.hellwalker.effectsDisabled()) {
             HellWalker.freezeLava(casted, this.getWorld(), pos);
         }
     }

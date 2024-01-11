@@ -60,8 +60,10 @@ public class SpectralVision extends Enchantment {
     }
 
     public void onUserDamaged(LivingEntity user, Entity attacker, int level) {
-        if (attacker instanceof LivingEntity) {
-            ((LivingEntity) attacker).addStatusEffect(new StatusEffectInstance(StatusEffects.GLOWING, 320, 0, false, false, false));
+        if (!ExtraEnchantsMain.CONFIG.spectralVision.effectsDisabled()) {
+            if (attacker instanceof LivingEntity) {
+                ((LivingEntity) attacker).addStatusEffect(new StatusEffectInstance(StatusEffects.GLOWING, 320, 0, false, false, false));
+            }
         }
     }
 

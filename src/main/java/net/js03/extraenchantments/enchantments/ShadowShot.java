@@ -62,13 +62,15 @@ public class ShadowShot extends Enchantment {
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        if (target instanceof LivingEntity && user.getWorld().isNight() && ((LivingEntity) target).isDead() && !user.getWorld().isThundering()) {
-            int rng = (int) (Math.random() * 15);
-            if (rng <= 2) {
-                if (((LivingEntity) target).getRecentDamageSource().isIn(DamageTypeTags.IS_PROJECTILE)) {
-                    user.getWorld().playSound(null, user.getBlockPos(), SoundEvents.BLOCK_RESPAWN_ANCHOR_CHARGE, SoundCategory.MASTER, 1f, 1f);
-                    user.addStatusEffect(new StatusEffectInstance(StatusEffects.INVISIBILITY, 220, 254, false, false, true));
-                    user.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 220, 254, false, false, true));
+        if (!ExtraEnchantsMain.CONFIG.shadowShot.effectsDisabled()) {
+            if (target instanceof LivingEntity && user.getWorld().isNight() && ((LivingEntity) target).isDead() && !user.getWorld().isThundering()) {
+                int rng = (int) (Math.random() * 15);
+                if (rng <= 2) {
+                    if (((LivingEntity) target).getRecentDamageSource().isIn(DamageTypeTags.IS_PROJECTILE)) {
+                        user.getWorld().playSound(null, user.getBlockPos(), SoundEvents.BLOCK_RESPAWN_ANCHOR_CHARGE, SoundCategory.MASTER, 1f, 1f);
+                        user.addStatusEffect(new StatusEffectInstance(StatusEffects.INVISIBILITY, 220, 254, false, false, true));
+                        user.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 220, 254, false, false, true));
+                    }
                 }
             }
         }

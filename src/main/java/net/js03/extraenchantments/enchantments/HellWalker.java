@@ -65,7 +65,7 @@ public class HellWalker extends Enchantment {
             BlockPos.Mutable mutable = new BlockPos.Mutable();
 
             for (BlockPos blockPos2 : BlockPos.iterate(blockPos.add(-i, -1, -i), blockPos.add(i, -1, i))) {
-                if (blockPos2.isWithinDistance(entity.getPos(), (double) i)) {
+                if (blockPos2.isWithinDistance(entity.getPos(), i)) {
                     mutable.set(blockPos2.getX(), blockPos2.getY() + 1, blockPos2.getZ());
                     BlockState blockState2 = world.getBlockState(mutable);
                     if (blockState2.isAir()) {

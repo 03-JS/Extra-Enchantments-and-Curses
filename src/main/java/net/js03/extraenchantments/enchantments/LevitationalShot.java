@@ -61,9 +61,11 @@ public class LevitationalShot extends Enchantment {
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        if (target instanceof LivingEntity && ((LivingEntity) target).getRecentDamageSource() != null) {
-            if (((LivingEntity) target).getRecentDamageSource().isIn(DamageTypeTags.IS_PROJECTILE)) {
-                ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(StatusEffects.LEVITATION, 2, 99, false, false, false));
+        if (!ExtraEnchantsMain.CONFIG.levitationalShot.effectsDisabled()) {
+            if (target instanceof LivingEntity && ((LivingEntity) target).getRecentDamageSource() != null) {
+                if (((LivingEntity) target).getRecentDamageSource().isIn(DamageTypeTags.IS_PROJECTILE)) {
+                    ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(StatusEffects.LEVITATION, 2, 99, false, false, false));
+                }
             }
         }
     }

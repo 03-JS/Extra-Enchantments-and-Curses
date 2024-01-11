@@ -52,6 +52,8 @@ public class CurseOfWithering extends Enchantment {
 
     @Override
     public void onUserDamaged(LivingEntity user, Entity attacker, int level) {
-        user.addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER, 320, 0, false, false, true));
+        if (!ExtraEnchantsMain.CONFIG.curseOfWithering.effectsDisabled()) {
+            user.addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER, 320, 0, false, false, true));
+        }
     }
 }

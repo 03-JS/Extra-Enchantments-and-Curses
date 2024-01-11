@@ -59,9 +59,11 @@ public class BurningThorns extends Enchantment {
     }
 
     public void onUserDamaged(LivingEntity user, Entity attacker, int level) {
-        int rng = (int) (1 + Math.random() * 4);
-        if (attacker instanceof LivingEntity && rng <= level && !attacker.isOnFire()) {
-            attacker.setOnFireFor(3);
+        if (!ExtraEnchantsMain.CONFIG.burningThorns.effectsDisabled()) {
+            int rng = (int) (1 + Math.random() * 4);
+            if (attacker instanceof LivingEntity && rng <= level && !attacker.isOnFire()) {
+                attacker.setOnFireFor(3);
+            }
         }
     }
 

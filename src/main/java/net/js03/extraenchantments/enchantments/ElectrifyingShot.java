@@ -56,14 +56,16 @@ public class ElectrifyingShot extends Enchantment {
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        int rng = (int) (Math.random() * 11);
-        if (target instanceof LivingEntity && ((LivingEntity) target).getRecentDamageSource() != null) {
-            if (((LivingEntity) target).getRecentDamageSource().isIn(DamageTypeTags.IS_PROJECTILE) && user.getWorld().isThundering()) {
-                if (rng <= 2) {
-                    LightningEntity lightningEntity = EntityType.LIGHTNING_BOLT.create(target.getWorld());
-                    assert lightningEntity != null;
-                    lightningEntity.refreshPositionAfterTeleport(target.getX(), target.getY(), target.getZ());
-                    target.getWorld().spawnEntity(lightningEntity);
+        if (!ExtraEnchantsMain.CONFIG.electrifyingShot.effectsDisabled()) {
+            int rng = (int) (Math.random() * 11);
+            if (target instanceof LivingEntity && ((LivingEntity) target).getRecentDamageSource() != null) {
+                if (((LivingEntity) target).getRecentDamageSource().isIn(DamageTypeTags.IS_PROJECTILE) && user.getWorld().isThundering()) {
+                    if (rng <= 2) {
+                        LightningEntity lightningEntity = EntityType.LIGHTNING_BOLT.create(target.getWorld());
+                        assert lightningEntity != null;
+                        lightningEntity.refreshPositionAfterTeleport(target.getX(), target.getY(), target.getZ());
+                        target.getWorld().spawnEntity(lightningEntity);
+                    }
                 }
             }
         }

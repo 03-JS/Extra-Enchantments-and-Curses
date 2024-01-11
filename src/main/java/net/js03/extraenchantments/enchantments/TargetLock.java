@@ -75,7 +75,7 @@ public class TargetLock extends Enchantment {
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        if (target instanceof LivingEntity) {
+        if (target instanceof LivingEntity && !ExtraEnchantsMain.CONFIG.targetLock.effectsDisabled()) {
             if (target.isAlive() && target == previousTarget && ((LivingEntity) target).getRecentDamageSource() != null) {
                 if (((LivingEntity) target).getRecentDamageSource().isIn(DamageTypeTags.IS_PROJECTILE)) {
                     // arrows++;

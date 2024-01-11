@@ -50,11 +50,13 @@ public class CurseOfZeus extends Enchantment {
 
     @Override
     public void onUserDamaged(LivingEntity user, Entity attacker, int level) {
-        if (user.getWorld().isRaining() || user.getWorld().isThundering()) {
-            LightningEntity lightningEntity = EntityType.LIGHTNING_BOLT.create(user.getWorld());
-            assert lightningEntity != null;
-            lightningEntity.refreshPositionAfterTeleport(user.getX(), user.getY(), user.getZ());
-            user.getWorld().spawnEntity(lightningEntity);
+        if (!ExtraEnchantsMain.CONFIG.curseOfZeus.effectsDisabled()) {
+            if (user.getWorld().isRaining() || user.getWorld().isThundering()) {
+                LightningEntity lightningEntity = EntityType.LIGHTNING_BOLT.create(user.getWorld());
+                assert lightningEntity != null;
+                lightningEntity.refreshPositionAfterTeleport(user.getX(), user.getY(), user.getZ());
+                user.getWorld().spawnEntity(lightningEntity);
+            }
         }
     }
 }

@@ -20,16 +20,14 @@ public class MagmaBlockMixin extends Block {
     }
 
     /**
-     * @author
-     * JS03
-     * @reason
-     * Modifying the onSteppedOn method so I can add an if statement
+     * @author JS03
+     * @reason Modifying the onSteppedOn method so I can add an if statement
      */
     @Overwrite
     public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
-        if (!entity.bypassesSteppingEffects() && entity instanceof LivingEntity && !EnchantmentHelper.hasFrostWalker((LivingEntity)entity) && EnchantmentHelper.getEquipmentLevel(ExtraEnchantsMain.HELLWALKER, (LivingEntity) entity) <= 0) {
+        if (!entity.bypassesSteppingEffects() && entity instanceof LivingEntity && !EnchantmentHelper.hasFrostWalker((LivingEntity) entity) && EnchantmentHelper.getEquipmentLevel(ExtraEnchantsMain.HELLWALKER, (LivingEntity) entity) <= 0) {
             entity.damage(world.getDamageSources().hotFloor(), 1.0f);
-        } else if (EnchantmentHelper.hasFrostWalker((LivingEntity) entity) && EnchantmentHelper.getEquipmentLevel(ExtraEnchantsMain.HELLWALKER, (LivingEntity) entity) != 0) {
+        } else if (EnchantmentHelper.getEquipmentLevel(ExtraEnchantsMain.HELLWALKER, (LivingEntity) entity) != 0) {
             if (ExtraEnchantsMain.CONFIG.hellwalker.effectsDisabled()) {
                 entity.damage(world.getDamageSources().hotFloor(), 1.0f);
             }

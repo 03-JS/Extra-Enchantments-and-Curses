@@ -66,5 +66,11 @@
   "enchantment.extra_enchantments.soul_reaper": "Segador de almas",
   "enchantment.extra_enchantments.soul_reaper.desc": "Reduce el daño del objeto a cambio de la posibilidad de curar al usuario por cada golpe a un mob hostil o neutral",
   "enchantment.extra_enchantments.experience_catalyst": "Catalizador de experiencia",
-  "enchantment.extra_enchantments.experience_catalyst.desc": "Aumenta la cantidad de experiencia que recibes cuando el objeto está en tu mano principal"
+  "enchantment.extra_enchantments.experience_catalyst.desc": "Aumenta la cantidad de experiencia que recibes cuando el objeto está en tu mano principal",
+  "enchantment.extra_enchantments.energized": "Energizado",
+  "enchantment.extra_enchantments.energized.desc": "Reduce la cantidad de fatigua que recibe el jugador",
+  "enchantment.extra_enchantments.cold_feet": "Pies fríos",
+  "enchantment.extra_enchantments.cold_feet.desc": "Te permite caminar sobre la nieve en polvo",
+  "enchantment.extra_enchantments.ice_protection": "Protección contra el hielo",
+  "enchantment.extra_enchantments.ice_protection.desc": "Reduce el daño que hace la congelación"
 }

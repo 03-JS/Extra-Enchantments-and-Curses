@@ -47,6 +47,41 @@ public class ConfigUtils {
                     itemTypeChecks.set(10, stack.getItem() instanceof ShearsItem);
                 }
             }
+            case "Cold Feet" -> {
+                if (ExtraEnchantsMain.CONFIG.coldFeet.acceptableItems.armor()) {
+                    itemTypeChecks.set(0, stack.getItem() instanceof ArmorItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.coldFeet.acceptableItems.sword()) {
+                    itemTypeChecks.set(1, stack.getItem() instanceof SwordItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.coldFeet.acceptableItems.axe()) {
+                    itemTypeChecks.set(2, stack.getItem() instanceof AxeItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.coldFeet.acceptableItems.pickaxe()) {
+                    itemTypeChecks.set(3, stack.getItem() instanceof PickaxeItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.coldFeet.acceptableItems.shovel()) {
+                    itemTypeChecks.set(4, stack.getItem() instanceof ShovelItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.coldFeet.acceptableItems.hoe()) {
+                    itemTypeChecks.set(5, stack.getItem() instanceof HoeItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.coldFeet.acceptableItems.fishingRod()) {
+                    itemTypeChecks.set(6, stack.getItem() instanceof FishingRodItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.coldFeet.acceptableItems.bow()) {
+                    itemTypeChecks.set(7, stack.getItem() instanceof BowItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.coldFeet.acceptableItems.crossbow()) {
+                    itemTypeChecks.set(8, stack.getItem() instanceof CrossbowItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.coldFeet.acceptableItems.trident()) {
+                    itemTypeChecks.set(9, stack.getItem() instanceof TridentItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.coldFeet.acceptableItems.shears()) {
+                    itemTypeChecks.set(10, stack.getItem() instanceof ShearsItem);
+                }
+            }
             case "Electrified" -> {
                 if (ExtraEnchantsMain.CONFIG.electrified.acceptableItems.armor()) {
                     itemTypeChecks.set(0, stack.getItem() instanceof ArmorItem);
@@ -569,6 +604,41 @@ public class ConfigUtils {
                     itemTypeChecks.set(9, stack.getItem() instanceof TridentItem);
                 }
                 if (ExtraEnchantsMain.CONFIG.incandescent.acceptableItems.shears()) {
+                    itemTypeChecks.set(10, stack.getItem() instanceof ShearsItem);
+                }
+            }
+            case "Ice Protection" -> {
+                if (ExtraEnchantsMain.CONFIG.iceProtection.acceptableItems.armor()) {
+                    itemTypeChecks.set(0, stack.getItem() instanceof ArmorItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.iceProtection.acceptableItems.sword()) {
+                    itemTypeChecks.set(1, stack.getItem() instanceof SwordItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.iceProtection.acceptableItems.axe()) {
+                    itemTypeChecks.set(2, stack.getItem() instanceof AxeItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.iceProtection.acceptableItems.pickaxe()) {
+                    itemTypeChecks.set(3, stack.getItem() instanceof PickaxeItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.iceProtection.acceptableItems.shovel()) {
+                    itemTypeChecks.set(4, stack.getItem() instanceof ShovelItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.iceProtection.acceptableItems.hoe()) {
+                    itemTypeChecks.set(5, stack.getItem() instanceof HoeItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.iceProtection.acceptableItems.fishingRod()) {
+                    itemTypeChecks.set(6, stack.getItem() instanceof FishingRodItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.iceProtection.acceptableItems.bow()) {
+                    itemTypeChecks.set(7, stack.getItem() instanceof BowItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.iceProtection.acceptableItems.crossbow()) {
+                    itemTypeChecks.set(8, stack.getItem() instanceof CrossbowItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.iceProtection.acceptableItems.trident()) {
+                    itemTypeChecks.set(9, stack.getItem() instanceof TridentItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.iceProtection.acceptableItems.shears()) {
                     itemTypeChecks.set(10, stack.getItem() instanceof ShearsItem);
                 }
             }

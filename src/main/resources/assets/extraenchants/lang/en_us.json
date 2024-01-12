@@ -69,6 +69,10 @@
   "enchantment.extra_enchantments.experience_catalyst.desc": "Increases the amount of experience you get when the item is in your main hand",
   "enchantment.extra_enchantments.energized": "Energized",
   "enchantment.extra_enchantments.energized.desc": "Decreases the amount of exhaustion the player takes",
+  "enchantment.extra_enchantments.cold_feet": "Cold Feet",
+  "enchantment.extra_enchantments.cold_feet.desc": "Allows you to walk on Powder Snow",
+  "enchantment.extra_enchantments.ice_protection": "Ice Protection",
+  "enchantment.extra_enchantments.ice_protection.desc": "Reduces the amount of damage taken when frozen",
 
   "text.config.extra-enchantments-and-curses-config.title": "Extra Enchantments & Curses v1.8.2 for Fabric",
   "text.config.extra-enchantments-and-curses-config.section.Enchantments": "Enchantments",

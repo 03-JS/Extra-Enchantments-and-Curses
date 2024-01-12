@@ -69,6 +69,9 @@ public class ConfigModel {
     public EnchantmentOptions burningThorns = new EnchantmentOptions(3, false, true, true, EnchantmentTarget.ARMOR_CHEST,
             new ItemOptions(true, false, false, false, false, false, false, false, false, false, false), Enchantment.Rarity.VERY_RARE, false);
     @Nest
+    public EnchantmentOptions coldFeet = new EnchantmentOptions(2, true, true, true, EnchantmentTarget.ARMOR_FEET,
+            new ItemOptions(), Enchantment.Rarity.VERY_RARE, false);
+    @Nest
     public EnchantmentOptions electrified = new EnchantmentOptions(1, true, true, true, EnchantmentTarget.ARMOR,
             new ItemOptions(), Enchantment.Rarity.VERY_RARE, false);
     @Nest
@@ -113,6 +116,9 @@ public class ConfigModel {
     @Nest
     public EnchantmentOptions incandescent = new EnchantmentOptions(1, false, true, true, EnchantmentTarget.CROSSBOW,
             new ItemOptions(), Enchantment.Rarity.RARE, false);
+    @Nest
+    public EnchantmentOptions iceProtection = new EnchantmentOptions(4, false, true, true, EnchantmentTarget.ARMOR,
+            new ItemOptions(), Enchantment.Rarity.UNCOMMON, false);
     @Nest
     public EnchantmentOptions levitationalShot = new EnchantmentOptions(1, false, true, true, EnchantmentTarget.CROSSBOW,
             new ItemOptions(), Enchantment.Rarity.VERY_RARE, false);

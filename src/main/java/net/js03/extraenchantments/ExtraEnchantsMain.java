@@ -27,7 +27,9 @@ public class ExtraEnchantsMain implements ModInitializer {
     public static final Enchantment LEVITATIONAL_SHOT = new LevitationalShot(CONFIG.levitationalShot.weight(), CONFIG.levitationalShot.target(), new EquipmentSlot[]{EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND});
     public static final Enchantment BURNING_THORNS = new BurningThorns(CONFIG.burningThorns.weight(), new EquipmentSlot[]{EquipmentSlot.CHEST});
     public static final Enchantment FREEZING_THORNS = new FreezingThorns(CONFIG.freezingThorns.weight(), new EquipmentSlot[]{EquipmentSlot.CHEST});
+    public static final Enchantment ICE_PROTECTION = new IceProtection(CONFIG.iceProtection.weight(), new EquipmentSlot[]{EquipmentSlot.CHEST, EquipmentSlot.HEAD, EquipmentSlot.LEGS, EquipmentSlot.FEET});
     public static final Enchantment HELLWALKER = new HellWalker(CONFIG.hellwalker.weight(), new EquipmentSlot[]{EquipmentSlot.FEET});
+    public static final Enchantment COLD_FEET = new ColdFeet(CONFIG.coldFeet.weight(), new EquipmentSlot[]{EquipmentSlot.FEET});
     public static final Enchantment SPECTRAL_VISION = new SpectralVision(CONFIG.spectralVision.weight(), new EquipmentSlot[]{EquipmentSlot.HEAD});
     public static final Enchantment FRENZY = new Frenzy(CONFIG.frenzy.weight(), CONFIG.frenzy.target(), new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     public static final Enchantment GUARDING_STRIKE = new GuardingStrike(CONFIG.guardingStrike.weight(), CONFIG.guardingStrike.target(), new EquipmentSlot[]{EquipmentSlot.MAINHAND});
@@ -75,12 +77,14 @@ public class ExtraEnchantsMain implements ModInitializer {
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "swiftness"), SWIFTNESS);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "experience_catalyst"), EXPERIENCE_CATALYST);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "burning_thorns"), BURNING_THORNS);
+        Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "ice_protection"), ICE_PROTECTION);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "freezing_thorns"), FREEZING_THORNS);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "overshield"), OVERSHIELD);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "hellwalker"), HELLWALKER);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "spectral_vision"), SPECTRAL_VISION);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "electrified"), ELECTRIFIED);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "energized"), ENERGIZED);
+        Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "cold_feet"), COLD_FEET);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "electrifying_shot"), ELECTRIFYING_SHOT);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "resonating_shot"), RESONATING_SHOT);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "shadow_shot"), SHADOW_SHOT);

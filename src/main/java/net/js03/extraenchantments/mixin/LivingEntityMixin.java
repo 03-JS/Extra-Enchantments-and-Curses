@@ -1,6 +1,7 @@
 package net.js03.extraenchantments.mixin;
 
 import net.js03.extraenchantments.ExtraEnchantsMain;
+import net.js03.extraenchantments.config.ExtraEnchantsConfig;
 import net.js03.extraenchantments.enchantments.ColdFeet;
 import net.js03.extraenchantments.enchantments.HellWalker;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -56,8 +57,11 @@ public abstract class LivingEntityMixin extends Entity {
         if (this.isSpectator()) {
             return false;
         }
-        boolean canBeFrozen = (EnchantmentHelper.getLevel(ExtraEnchantsMain.ICE_PROTECTION, this.getEquippedStack(EquipmentSlot.HEAD)) < 4 || EnchantmentHelper.getLevel(ExtraEnchantsMain.ICE_PROTECTION, this.getEquippedStack(EquipmentSlot.CHEST)) < 4 || EnchantmentHelper.getLevel(ExtraEnchantsMain.ICE_PROTECTION, this.getEquippedStack(EquipmentSlot.LEGS)) < 4 || EnchantmentHelper.getLevel(ExtraEnchantsMain.ICE_PROTECTION, this.getEquippedStack(EquipmentSlot.FEET)) < 4 ) && !this.getEquippedStack(EquipmentSlot.HEAD).isIn(ItemTags.FREEZE_IMMUNE_WEARABLES) && !this.getEquippedStack(EquipmentSlot.CHEST).isIn(ItemTags.FREEZE_IMMUNE_WEARABLES) && !this.getEquippedStack(EquipmentSlot.LEGS).isIn(ItemTags.FREEZE_IMMUNE_WEARABLES) && !this.getEquippedStack(EquipmentSlot.FEET).isIn(ItemTags.FREEZE_IMMUNE_WEARABLES);
-        return canBeFrozen && super.canFreeze();
+        boolean bl = !this.getEquippedStack(EquipmentSlot.HEAD).isIn(ItemTags.FREEZE_IMMUNE_WEARABLES) && !this.getEquippedStack(EquipmentSlot.CHEST).isIn(ItemTags.FREEZE_IMMUNE_WEARABLES) && !this.getEquippedStack(EquipmentSlot.LEGS).isIn(ItemTags.FREEZE_IMMUNE_WEARABLES) && !this.getEquippedStack(EquipmentSlot.FEET).isIn(ItemTags.FREEZE_IMMUNE_WEARABLES);
+        if (!ExtraEnchantsMain.CONFIG.iceProtection.effectsDisabled()) {
+            bl = bl && EnchantmentHelper.getLevel(ExtraEnchantsMain.ICE_PROTECTION, this.getEquippedStack(EquipmentSlot.HEAD)) < 4 || EnchantmentHelper.getLevel(ExtraEnchantsMain.ICE_PROTECTION, this.getEquippedStack(EquipmentSlot.CHEST)) < 4 || EnchantmentHelper.getLevel(ExtraEnchantsMain.ICE_PROTECTION, this.getEquippedStack(EquipmentSlot.LEGS)) < 4 || EnchantmentHelper.getLevel(ExtraEnchantsMain.ICE_PROTECTION, this.getEquippedStack(EquipmentSlot.FEET)) < 4;
+        }
+        return bl && super.canFreeze();
     }
 
 }

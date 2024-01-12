@@ -21,6 +21,9 @@ public class IceProtection extends Enchantment {
 
     @Override
     public int getProtectionAmount(int level, DamageSource source) {
+        if (ExtraEnchantsMain.CONFIG.iceProtection.effectsDisabled()) {
+            return 0;
+        }
         return source.isIn(DamageTypeTags.IS_FREEZING) ? level * 2 : 0;
     }
 

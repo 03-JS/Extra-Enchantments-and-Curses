@@ -24,6 +24,9 @@ public class HellWalker extends Enchantment {
 
     @Override
     public int getProtectionAmount(int level, DamageSource source) {
+        if (ExtraEnchantsMain.CONFIG.hellwalker.effectsDisabled()) {
+            return 0;
+        }
         return source.isIn(DamageTypeTags.IS_FIRE) ? 12 : 0;
     }
 

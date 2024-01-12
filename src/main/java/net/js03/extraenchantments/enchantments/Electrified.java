@@ -27,6 +27,9 @@ public class Electrified extends Enchantment {
 
     @Override
     public int getProtectionAmount(int level, DamageSource source) {
+        if (ExtraEnchantsMain.CONFIG.electrified.effectsDisabled()) {
+            return 0;
+        }
         return source.isIn(DamageTypeTags.IS_LIGHTNING) ? 4 : 0;
     }
 

@@ -64,7 +64,7 @@ public class IceProtection extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        return super.canAccept(other) && !(other instanceof ProtectionEnchantment);
+        return super.canAccept(other) && !(other instanceof ProtectionEnchantment) && !(other instanceof ColdFeet);
     }
 
 }

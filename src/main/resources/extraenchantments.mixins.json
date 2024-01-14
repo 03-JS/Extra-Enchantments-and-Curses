@@ -4,6 +4,7 @@
   "package": "net.js03.extraenchantments.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "BowMixin",
     "CrossbowMixin",
     "LivingEntityMixin",
     "MagmaBlockMixin",

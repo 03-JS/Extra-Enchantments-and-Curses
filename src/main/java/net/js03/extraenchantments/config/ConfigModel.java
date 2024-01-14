@@ -149,6 +149,10 @@ public class ConfigModel {
     @Nest
     public EnchantmentOptions targetLock = new EnchantmentOptions(1, true, true, true, EnchantmentTarget.CROSSBOW,
             new ItemOptions(), Enchantment.Rarity.VERY_RARE, false);
+    @Nest
+    public EnchantmentOptions echo = new EnchantmentOptions(4, false, true, true, EnchantmentTarget.BOW,
+            new ItemOptions(), Enchantment.Rarity.COMMON, false);
+
 
     @SectionHeader("Curses")
     @Nest

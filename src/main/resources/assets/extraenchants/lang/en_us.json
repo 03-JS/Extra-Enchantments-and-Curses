@@ -73,6 +73,8 @@
   "enchantment.extra_enchantments.cold_feet.desc": "Allows you to walk on Powder Snow",
   "enchantment.extra_enchantments.ice_protection": "Ice Protection",
   "enchantment.extra_enchantments.ice_protection.desc": "Reduces the amount of damage taken when frozen",
+  "enchantment.extra_enchantments.echo": "Echo",
+  "enchantment.extra_enchantments.echo.desc": "Arrows shot from a bow now pierce targets at the cost of less durability",
 
   "text.config.extra-enchantments-and-curses-config.title": "Extra Enchantments & Curses v1.9 for Fabric",
   "text.config.extra-enchantments-and-curses-config.section.Enchantments": "Enchantments",

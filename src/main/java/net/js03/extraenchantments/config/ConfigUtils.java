@@ -82,6 +82,41 @@ public class ConfigUtils {
                     itemTypeChecks.set(10, stack.getItem() instanceof ShearsItem);
                 }
             }
+            case "Echo" -> {
+                if (ExtraEnchantsMain.CONFIG.echo.acceptableItems.armor()) {
+                    itemTypeChecks.set(0, stack.getItem() instanceof ArmorItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.echo.acceptableItems.sword()) {
+                    itemTypeChecks.set(1, stack.getItem() instanceof SwordItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.echo.acceptableItems.axe()) {
+                    itemTypeChecks.set(2, stack.getItem() instanceof AxeItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.echo.acceptableItems.pickaxe()) {
+                    itemTypeChecks.set(3, stack.getItem() instanceof PickaxeItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.echo.acceptableItems.shovel()) {
+                    itemTypeChecks.set(4, stack.getItem() instanceof ShovelItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.echo.acceptableItems.hoe()) {
+                    itemTypeChecks.set(5, stack.getItem() instanceof HoeItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.echo.acceptableItems.fishingRod()) {
+                    itemTypeChecks.set(6, stack.getItem() instanceof FishingRodItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.echo.acceptableItems.bow()) {
+                    itemTypeChecks.set(7, stack.getItem() instanceof BowItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.echo.acceptableItems.crossbow()) {
+                    itemTypeChecks.set(8, stack.getItem() instanceof CrossbowItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.echo.acceptableItems.trident()) {
+                    itemTypeChecks.set(9, stack.getItem() instanceof TridentItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.echo.acceptableItems.shears()) {
+                    itemTypeChecks.set(10, stack.getItem() instanceof ShearsItem);
+                }
+            }
             case "Electrified" -> {
                 if (ExtraEnchantsMain.CONFIG.electrified.acceptableItems.armor()) {
                     itemTypeChecks.set(0, stack.getItem() instanceof ArmorItem);

@@ -5,7 +5,6 @@ import net.js03.extraenchantments.config.ExtraEnchantsConfig;
 import net.js03.extraenchantments.curses.*;
 import net.js03.extraenchantments.enchantments.*;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -47,6 +46,7 @@ public class ExtraEnchantsMain implements ModInitializer {
     public static final Enchantment RESONATING_SHOT = new ResonatingShot(CONFIG.resonatingShot.weight(), new EquipmentSlot[]{EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND});
     public static final Enchantment SHADOW_SHOT = new ShadowShot(CONFIG.shadowShot.weight(), new EquipmentSlot[]{EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND});
     public static final Enchantment HOT_SHOT = new HotShot(CONFIG.incandescent.weight(), new EquipmentSlot[]{EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND});
+    public static final Enchantment ECHO = new Echo(CONFIG.echo.weight(), new EquipmentSlot[]{EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND});
     public static final Enchantment CURSE_OF_WEAKNESS = new CurseOfWeakness(CONFIG.curseOfWeakness.weight(), new EquipmentSlot[]{EquipmentSlot.CHEST, EquipmentSlot.HEAD, EquipmentSlot.FEET, EquipmentSlot.LEGS});
     public static final Enchantment ENIGMA_RESONATOR = new EnigmaResonator(CONFIG.enigmaResonator.weight(), new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     public static final Enchantment TARGET_LOCK = new TargetLock(CONFIG.targetLock.weight(), new EquipmentSlot[]{EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND});
@@ -88,6 +88,7 @@ public class ExtraEnchantsMain implements ModInitializer {
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "electrifying_shot"), ELECTRIFYING_SHOT);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "resonating_shot"), RESONATING_SHOT);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "shadow_shot"), SHADOW_SHOT);
+        Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "echo"), ECHO);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "levitational_shot"), LEVITATIONAL_SHOT);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "incandescent"), HOT_SHOT);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "supercharge"), SUPERCHARGE);

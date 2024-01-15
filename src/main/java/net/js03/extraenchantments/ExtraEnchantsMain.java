@@ -57,6 +57,7 @@ public class ExtraEnchantsMain implements ModInitializer {
     public static final Enchantment OVERSHIELD = new Overshield(CONFIG.overshield.weight(), new EquipmentSlot[]{EquipmentSlot.CHEST});
     public static final Enchantment EXPERIENCE_CATALYST = new ExperienceCatalyst(CONFIG.xpCatalyst.weight(), new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     public static final Enchantment ENERGIZED = new Energized(CONFIG.energized.weight(), new EquipmentSlot[]{EquipmentSlot.LEGS});
+    public static final Enchantment CURSE_OF_FRAGILITY = new CurseOfFragility(CONFIG.energized.weight(), new EquipmentSlot[]{EquipmentSlot.LEGS});
 
 
     @Override
@@ -99,6 +100,7 @@ public class ExtraEnchantsMain implements ModInitializer {
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "nausea_curse"), CURSE_OF_NAUSEA);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "weakness_curse"), CURSE_OF_WEAKNESS);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "incompatibility_curse"), CURSE_OF_INCOMPATIBILITY);
+        Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "fragility_curse"), CURSE_OF_FRAGILITY);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "slowness_curse"), CURSE_OF_SLOWNESS);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "undead_curse"), CURSE_OF_UNDEAD);
         Registry.register(Registries.ENCHANTMENT, new Identifier("extra_enchantments", "attrition_curse"), CURSE_OF_ATTRITION);

@@ -1097,6 +1097,41 @@ public class ConfigUtils {
                     itemTypeChecks.set(10, stack.getItem() instanceof ShearsItem);
                 }
             }
+            case "Fragility Curse" -> {
+                if (ExtraEnchantsMain.CONFIG.curseOfFragility.acceptableItems.armor()) {
+                    itemTypeChecks.set(0, stack.getItem() instanceof ArmorItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.curseOfFragility.acceptableItems.sword()) {
+                    itemTypeChecks.set(1, stack.getItem() instanceof SwordItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.curseOfFragility.acceptableItems.axe()) {
+                    itemTypeChecks.set(2, stack.getItem() instanceof AxeItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.curseOfFragility.acceptableItems.pickaxe()) {
+                    itemTypeChecks.set(3, stack.getItem() instanceof PickaxeItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.curseOfFragility.acceptableItems.shovel()) {
+                    itemTypeChecks.set(4, stack.getItem() instanceof ShovelItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.curseOfFragility.acceptableItems.hoe()) {
+                    itemTypeChecks.set(5, stack.getItem() instanceof HoeItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.curseOfFragility.acceptableItems.fishingRod()) {
+                    itemTypeChecks.set(6, stack.getItem() instanceof FishingRodItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.curseOfFragility.acceptableItems.bow()) {
+                    itemTypeChecks.set(7, stack.getItem() instanceof BowItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.curseOfFragility.acceptableItems.crossbow()) {
+                    itemTypeChecks.set(8, stack.getItem() instanceof CrossbowItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.curseOfFragility.acceptableItems.trident()) {
+                    itemTypeChecks.set(9, stack.getItem() instanceof TridentItem);
+                }
+                if (ExtraEnchantsMain.CONFIG.curseOfFragility.acceptableItems.shears()) {
+                    itemTypeChecks.set(10, stack.getItem() instanceof ShearsItem);
+                }
+            }
             case "Incompat Curse" -> {
                 if (ExtraEnchantsMain.CONFIG.curseOfIncompatibility.acceptableItems.armor()) {
                     itemTypeChecks.set(0, stack.getItem() instanceof ArmorItem);

@@ -72,6 +72,9 @@ public class ConfigModel {
     public EnchantmentOptions coldFeet = new EnchantmentOptions(2, true, true, true, EnchantmentTarget.ARMOR_FEET,
             new ItemOptions(), Enchantment.Rarity.VERY_RARE, false);
     @Nest
+    public EnchantmentOptions echo = new EnchantmentOptions(4, false, true, true, EnchantmentTarget.BOW,
+            new ItemOptions(), Enchantment.Rarity.COMMON, false);
+    @Nest
     public EnchantmentOptions electrified = new EnchantmentOptions(1, true, true, true, EnchantmentTarget.ARMOR,
             new ItemOptions(), Enchantment.Rarity.VERY_RARE, false);
     @Nest
@@ -149,10 +152,6 @@ public class ConfigModel {
     @Nest
     public EnchantmentOptions targetLock = new EnchantmentOptions(1, true, true, true, EnchantmentTarget.CROSSBOW,
             new ItemOptions(), Enchantment.Rarity.VERY_RARE, false);
-    @Nest
-    public EnchantmentOptions echo = new EnchantmentOptions(4, false, true, true, EnchantmentTarget.BOW,
-            new ItemOptions(), Enchantment.Rarity.COMMON, false);
-
 
     @SectionHeader("Curses")
     @Nest
@@ -160,6 +159,9 @@ public class ConfigModel {
             new ItemOptions(false, false, true, true, true, true, false, false, false, true, false), Enchantment.Rarity.VERY_RARE, false);
     @Nest
     public EnchantmentOptions curseOfBlindness = new EnchantmentOptions(1, true, true, true, EnchantmentTarget.ARMOR_HEAD,
+            new ItemOptions(), Enchantment.Rarity.VERY_RARE, false);
+    @Nest
+    public EnchantmentOptions curseOfFragility = new EnchantmentOptions(1, true, true, true, EnchantmentTarget.BREAKABLE,
             new ItemOptions(), Enchantment.Rarity.VERY_RARE, false);
     @Nest
     public EnchantmentOptions curseOfIncompatibility = new EnchantmentOptions(1, true, true, true, EnchantmentTarget.BREAKABLE,
